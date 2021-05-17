@@ -8,24 +8,26 @@
     "net5.0": []
   },
   "packageFolders": {
-    "/Users/mjalid/.nuget/packages/": {}
+    "C:\\Users\\perla\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/mjalid/Desktop/Progra W3/Progra-web-3/Progra-web-3_Tp-final/Progra-web-3_Tp-final.csproj",
+      "projectUniqueName": "C:\\Users\\perla\\source\\repos\\Progra-web-3\\Progra-web-3_Tp-final\\Progra-web-3_Tp-final.csproj",
       "projectName": "Progra-web-3_Tp-final",
-      "projectPath": "/Users/mjalid/Desktop/Progra W3/Progra-web-3/Progra-web-3_Tp-final/Progra-web-3_Tp-final.csproj",
-      "packagesPath": "/Users/mjalid/.nuget/packages/",
-      "outputPath": "/Users/mjalid/Desktop/Progra W3/Progra-web-3/Progra-web-3_Tp-final/obj/",
+      "projectPath": "C:\\Users\\perla\\source\\repos\\Progra-web-3\\Progra-web-3_Tp-final\\Progra-web-3_Tp-final.csproj",
+      "packagesPath": "C:\\Users\\perla\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\perla\\source\\repos\\Progra-web-3\\Progra-web-3_Tp-final\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/mjalid/.config/NuGet/NuGet.Config"
+        "C:\\Users\\perla\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -61,7 +63,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.202/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }
