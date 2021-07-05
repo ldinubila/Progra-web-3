@@ -13,3 +13,7 @@
 button a {
     color: white !important;
 }
+
+.fecha-borrado {
+    display: none;
+}
