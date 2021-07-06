@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Progra_web_3_Tp_final.Models;
 
 namespace Progra_web_3_Tp_final.Servicios
@@ -17,7 +18,7 @@ namespace Progra_web_3_Tp_final.Servicios
 
         public Pedido ObtenerPorId(int id)
         {
-            return _dbContext.Pedidos.Find(id);
+            return _dbContext.Pedidos.Include("PedidoArticulos").Include("PedidoArticulos.IdArticuloNavigation").Where(a => a.IdPedido == id).FirstOrDefault();
         }
 
         public void Alta(Pedido pedido)

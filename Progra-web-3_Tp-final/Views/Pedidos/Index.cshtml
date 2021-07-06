@@ -42,13 +42,13 @@
                 <th>Ver</th>
             </tr>
         </thead>
-        @foreach (var pedido in Model)
+        @foreach (Pedido pedido in Model)
         {
             <tr>
-                <td>@pedido.IdPedido</td>
-                <td>@pedido.IdEstado</td>
+                <td>@pedido.IdClienteNavigation.Nombre - #@pedido.NroPedido</td>
+                <td>@pedido.IdEstadoNavigation.Descripcion</td>
                 <td>@pedido.FechaModificacion</td>
-                <td><a href="/Pedidos/EditarPedido">Ver</a></td>
+                <td><a href="/Pedidos/EditarPedido/@pedido.IdPedido">Ver</a></td>
             </tr>
          }
     </table>

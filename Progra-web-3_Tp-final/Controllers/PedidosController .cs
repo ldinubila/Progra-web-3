@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Progra_web_3_Tp_final.Servicios;
 using Progra_web_3_Tp_final.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Progra_web_3_Tp_final.Controllers
 {
@@ -22,7 +23,7 @@ namespace Progra_web_3_Tp_final.Controllers
 
         public IActionResult Index()
         {
-            return View(context.Pedidos.ToList());
+            return View(context.Pedidos.Include("IdClienteNavigation").Include("IdEstadoNavigation").ToList());
         }
 
         public IActionResult NuevoPedido()
@@ -30,23 +31,23 @@ namespace Progra_web_3_Tp_final.Controllers
             return View();
         }
 
-        //public ActionResult EditarPedido(int id)
-        //{
-        //    Pedido pedido = _pedidosServicio.ObtenerPorId(id);
-        //    return View(pedido);
-        //}
-
-        //[HttpPost]
-        //public ActionResult EditarPedido(Pedido pedido)
-        //{
-        //    _pedidosServicio.Modificar(pedido);
-        //    return Redirect("/Pedidos");
-        //}
-
-        public ActionResult EditarPedido()
+        public ActionResult EditarPedido(int id)
         {
-            return View();
+            Pedido pedido = _pedidosServicio.ObtenerPorId(id);
+            return View(pedido);
         }
+
+        [HttpPost]
+        public ActionResult EditarPedido(Pedido pedido)
+        {
+            _pedidosServicio.Modificar(pedido);
+            return Redirect("/Pedidos");
+        }
+
+        //public ActionResult EditarPedido()
+        //{
+        //    return View();
+        //}
 
         public IActionResult Eliminar(int id)
         {
