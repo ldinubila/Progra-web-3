@@ -8,18 +8,18 @@
 
 <div class="text-center">
     <div class="clientes-filters">
-        <input type="text" class="form-control col-lg-3" id="buscar_nombre" placeholder="Nombre cliente">
-        <input type="text" class="form-control col-lg-3" id="buscar_numero" placeholder="Numero">
+        <input type="text" class="form-control col-lg-3" id="buscar_nombre" onkeyup="filtro_nombre()" placeholder="Nombre">
+        <input type="text" class="form-control col-lg-3" id="buscar_numero" onkeyup="filtro_numero()" placeholder="Numero">
         <div class="form-group form-check col-lg-3">
             <label class="form-check-label col-lg-9" for="excluir_eliminados">Excluir eliminados</label>
-            <input type="checkbox" class="form-check-input" id="excluir_eliminados">
+            <input type="checkbox" class="form-check-input" id="excluir_eliminados" onclick="filtro_eliminados()">
         </div>
         <button type="button" class="btn btn-info">
             <a href="/Clientes/NuevoCliente">Nuevo Cliente</a>
         </button>
     </div>
     <div>
-        <table id="example" class="display" style="width:100%">
+        <table id="tabla_clientes" class="display" style="width:100%">
             <thead>
                 <tr>
                     <th>Nombre</th>
@@ -35,6 +35,7 @@
                         <td>@cliente.Nombre</td>
                         <td>@cliente.Numero</td>
                         <td>@cliente.Telefono</td>
+                        <td class="fecha-borrado">@cliente.FechaBorrado</td>
                         <td><a href="/Clientes/EditarCliente/@cliente.IdCliente">Ver</a></td>
                     </tr>
                 }
