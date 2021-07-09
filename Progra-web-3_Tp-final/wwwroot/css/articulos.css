@@ -9,3 +9,7 @@
     justify-content: space-evenly;
     margin: 3% 0;
 }
+
+.fecha-borrado {
+    display: none;
+}
