@@ -49,6 +49,15 @@ namespace Progra_web_3_Tp_final
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+            app.Use(async (context, next) =>
+            {
+                await next();
+                if (context.Response.StatusCode == 404)
+                {
+                    context.Request.Path = "/Home/Error";
+                    await next();
+                }
+            });
             app.UseStaticFiles();
 
             app.UseRouting();
