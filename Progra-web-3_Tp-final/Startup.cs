@@ -31,10 +31,6 @@ namespace Progra_web_3_Tp_final
                 options.Cookie.Name = ".MiAPP.Session";
                 options.IdleTimeout = TimeSpan.FromSeconds(60);
             });
-
-            //services.AddBundles(options => {
-            //    options.AppendVersion = true;
-            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
