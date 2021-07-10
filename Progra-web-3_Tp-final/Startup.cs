@@ -52,7 +52,9 @@ namespace Progra_web_3_Tp_final
                 await next();
                 if (context.Response.StatusCode == 404)
                 {
-                    context.Request.Path = "/Home";
+
+                    context.Request.Path = "/Home/Error";
+
                     await next();
                 }
             });

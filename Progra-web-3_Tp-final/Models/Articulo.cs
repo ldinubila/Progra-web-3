@@ -18,7 +18,7 @@ namespace Progra_web_3_Tp_final.Models
         [Required(ErrorMessage ="Por favor ingrese un código")]
         [StringLength(50)]
         public string Codigo { get; set; }
-        [Required(ErrorMessage = "Por favor ingrese un código")]
+        [Required(ErrorMessage = "Por favor ingrese una descripción")]
         [StringLength(300)]
         public string Descripcion { get; set; }
         public DateTime FechaCreacion { get; set; }

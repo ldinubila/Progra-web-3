@@ -5,8 +5,8 @@
 <script src="~/js/articulos.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<div class="mt-4">
-
+<div class="text-center">
+    <h3>Editar Articulo</h3>
     <form class="articulos-form">
         <input type="hidden" id="IdArticulo" name="IdArticulo" value="@Model.IdArticulo" />
         <div>
@@ -17,11 +17,6 @@
 
     </form>
     <button type="button" class="btn btn-success mt-2" id="editar">Modificar</button>
+    <button type="button" class="btn btn-danger mt-2" id="cancelar">Cancelar</button>
 
-
-    <div class="text-center mt-2 d-flex">
-        <form action="../../Articulos" method="post">
-            <button type="submit" class="btn btn-danger">Cancelar</button>
-        </form>
-    </div>
 </div>

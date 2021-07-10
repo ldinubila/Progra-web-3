@@ -28,6 +28,7 @@ namespace Progra_web_3_Tp_final.Servicios
             Articulo artNuevo = ObtenerPorId(art.IdArticulo);
             artNuevo.Codigo = art.Codigo;
             artNuevo.Descripcion = art.Descripcion;
+            artNuevo.FechaModificacion = DateTime.Now;
             _dbContext.SaveChanges();
         }
 
