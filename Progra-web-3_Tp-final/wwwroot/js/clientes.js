@@ -2,21 +2,7 @@
     var table = $('#tabla_clientes').DataTable({
         "searching": false,
         "info": false,
-        "order": [[1, "asc"]],
-        initComplete: function () {
-            // Apply the search
-            this.api().columns().every(function () {
-                var that = this;
-
-                $('input', this.footer()).on('keyup change clear', function () {
-                    if (that.search() !== this.value) {
-                        that
-                            .search(this.value)
-                            .draw();
-                    }
-                });
-            });
-        }
+        "order": [[1, "asc"]]
     });
 
     $("#guardar").click(() => {
@@ -46,7 +32,7 @@
                             title: `El cliente: ${data.nombre} fue eliminado`,
                             showConfirmButton: false,
                             timer: 1500
-                        }).then(response => (window.location.href = "/Clientes"))
+                        }).then(response => (window.location.href = "/Clientes"));
                     },
                     error: error => {
                         console.log(error);
@@ -69,21 +55,21 @@
         });
 
         return data;
-    }
+    };
 
     const limpiarForm = () => {
         $(".clientes-form :input").each(function () {
             $(this).val("");
         });
+    };
+
+    function existeNumero(numero) {
+        return $.get("/clientes/existenumero?numero=" + numero, response => (response.responseJSON));
     }
 
     $("#cancelar").click(() => {
         window.location.href = "/Clientes";
     });
-
-    const existeNumero = async numero => {
-        return $.get("/clientes/existenumero?numero=" + numero, response => (response.responseJSON));
-    }
 
     async function validarForm() {
         const nombre = $("#nombre").val();
@@ -146,7 +132,6 @@
                 }
             });
         }
-
     }
 });
 
