@@ -26,4 +26,13 @@
         }
     });
 
+    console.log("Hola");
+    
+
+    let eliminar = document.getElementsByClassName('eliminar')
+
+    for (let i = 0; i < eliminar.length; i++) {
+
+        console.log(eliminar[i])
+    }
 });

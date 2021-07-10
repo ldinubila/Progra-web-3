@@ -1,4 +1,4 @@
-﻿@model List<Progra_web_3_Tp_final.Models.Pedido>;
+﻿@model Progra_web_3_Tp_final.Models.Pedido
     
 @{
     ViewData["Title"] = "Home Page";
@@ -26,7 +26,7 @@
         </div>
         </div>
     </div>
-<table id="example" class="display" style="width:100%">
+<table id="example" class="display text-center" style="width:100%">
     <thead>
         <tr>
             <th>Descripcion</th>
@@ -36,15 +36,15 @@
         </tr>
     </thead>
        
-        @*@foreach (var pedido in Model)
+        @foreach (PedidoArticulo pedart in Model.PedidoArticulos)
         {
             <tr>
-                <td>@pedido.IdPedido</td>
-                <td>@pedido.NroPedido</td>
-                <td>@pedido.IdCliente</td>
-                <td><a href="/Pedidos/Eliminar">Ver</a></td>
+                <td>@pedart.IdArticuloNavigation.Descripcion</td>
+                <td>@pedart.IdArticuloNavigation.Codigo</td>
+                <td>@pedart.Cantidad</td>
+                <td><a class="eliminar" href="/Pedidos/Eliminar">Quitar</a></td>
             </tr>
-        }*@
+        }
 </table>
     <div class="cajaComentarios">
         <label  for="excluir_eliminados">Comentarios</label>
