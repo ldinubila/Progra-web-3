@@ -1,11 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<script src="~/js/usuarios.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-
 <div class="mt-4">
 
     <form action="../../Usuarios/CrearNuevo" method="post">
@@ -13,16 +8,17 @@
             <input type="text" class="form-control col-lg-3 m-2" id="email_user" name="Email" placeholder="Ingrese Email">
             <input type="password" class="form-control col-lg-3 m-2" id="password_user" name="Password" placeholder="Ingrese Contraseña">
             <label class="form-check-label col-lg-9 m-2" for="es_admin">Es administrador</label>
-            <input type="checkbox" class="form-check-input" id="marca_user" name="AdminCheck" placeholder="Es administrador">
+            <input type="checkbox" class="form-check-input" id="marca_user" name="EsAdmin" placeholder="Es administrador">
             <input type="text" class="form-control col-lg-3 m-2" id="nombre_user" name="Nombre" placeholder="Ingrese Nombre">
             <input type="text" class="form-control col-lg-3 m-2" id="apellido_user" name="Apellido" placeholder="Ingrese Apellido">
             <input type="text" class="form-control col-lg-3 m-2" id="telefono_user" name="Telefono" placeholder="Ingrese Telefono">
-            <input type="date" class="form-control col-lg-3 m-2" id="fecha_nacimiento_user" name="Fecha de Nacimiento" placeholder="Ingrese Fecha de nacimiento">
+            <input type="date" class="form-control col-lg-3 m-2" id="fecha_nacimiento_user" name="FechaNacimiento" placeholder="Ingrese Fecha de nacimiento">
         </div>
         <button type="submit" class="btn btn-success m-2" onclick="crear()">Guardar</button>
     </form>
     
         <div class="text-center mt-2 d-flex">
+
             <button type="button" class="btn btn-success m-2">Guardar y crear otro</button>
             <div>
                 <form action="../../Usuarios" method="post">
