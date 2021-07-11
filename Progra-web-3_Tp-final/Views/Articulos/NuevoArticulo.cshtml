@@ -2,9 +2,6 @@
 @{
     ViewData["Title"] = "Nuevo Articulo";
 }
-<script src="~/js/articulos.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 
 <div class="text-center">
     <h3>Nuevo Articulo</h3>
@@ -17,7 +14,7 @@
             <input type="text" class="form-control col-lg-3 mb-1 ml-1" id="Descripcion" name="Descripcion" placeholder="Descripción">
             <span asp-validation-for="Descripcion" class="ml-2 text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-success mt-2">Guardar</button> 
+        <button type="submit" class="btn btn-success mt-2">Guardar</button>
     </form>
     <!-- <button type="button" class="btn btn-success" id="guardar">Guardar</button> -->
     <button type="button" class="btn btn-success" id="guardar_y_limpiar">Guardar y crear otro</button>

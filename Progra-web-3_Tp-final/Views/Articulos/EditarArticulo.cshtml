@@ -2,16 +2,14 @@
 @{
     ViewData["Title"] = "Editar Articulo";
 }
-<script src="~/js/articulos.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <div class="text-center">
     <h3>Editar Articulo</h3>
     <form class="articulos-form">
         <input type="hidden" id="IdArticulo" name="IdArticulo" value="@Model.IdArticulo" />
         <div>
-            <input type="text" class="form-control col-lg-3 mb-2" id="Codigo" name="Codigo" placeholder="Código" required value="@Model.Codigo">
-            <input type="text" class="form-control col-lg-3" id="Descripcion" name="Descripcion" placeholder="Descripción" required value="@Model.Descripcion">
+            <input type="text" class="form-control mb-2" id="Codigo" name="Codigo" placeholder="Código" required value="@Model.Codigo">
+            <input type="text" class="form-control" id="Descripcion" name="Descripcion" placeholder="Descripción" required value="@Model.Descripcion">
         </div>
 
 
