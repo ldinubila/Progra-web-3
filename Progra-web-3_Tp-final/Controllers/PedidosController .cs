@@ -1,28 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Progra_web_3_Tp_final.Servicios;
-using Progra_web_3_Tp_final.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Progra_web_3_Tp_final.Models;
+using Progra_web_3_Tp_final.Servicios;
+using System.Linq;
 
 namespace Progra_web_3_Tp_final.Controllers
 {
+    [Authorize]
     public class PedidosController : Controller
     {
         _20211CTPContext context;
         private IPedidosServicio _pedidosServicio;
+        private readonly TokenServicio _tokenServicio;
+        private readonly IConfiguration _configuration;
+        private readonly NavegarServicio _navegarServicio;
 
-        public PedidosController()
+        public PedidosController(IConfiguration config)
         {
             context = new _20211CTPContext();
             _pedidosServicio = new PedidosServicio(context);
-        }
+            _tokenServicio = new TokenServicio();
+            _configuration = config;
+            _navegarServicio = new NavegarServicio();
 
+        }
+        [AllowAnonymous]
         public IActionResult Index()
         {
+            var secretKey = _configuration.GetValue<string>("SecretKey");
+            string returnView = _navegarServicio.ValidarNavegacion(HttpContext.Session.GetString("Token"), HttpContext.Session.GetString("EsAdmin"), _configuration, 'N', "Pedidos");
+
+            if (returnView == "Home")
+            {
+                HttpContext.Session.SetString("VistaAnteriorSinLogin", "/Usuarios");
+                return Redirect("/Home");
+            }
+
             return View(context.Pedidos.Include("IdClienteNavigation").Include("IdEstadoNavigation").ToList());
         }
 

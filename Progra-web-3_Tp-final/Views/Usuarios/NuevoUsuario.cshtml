@@ -1,29 +1,26 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-<div class="mt-4">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
 
-    <form action="../../Usuarios/CrearNuevo" method="post">
-        <div>
-            <input type="text" class="form-control col-lg-3 m-2" id="email_user" name="Email" placeholder="Ingrese Email">
-            <input type="password" class="form-control col-lg-3 m-2" id="password_user" name="Password" placeholder="Ingrese Contraseña">
-            <label class="form-check-label col-lg-9 m-2" for="es_admin">Es administrador</label>
-            <input type="checkbox" class="form-check-input" id="marca_user" name="EsAdmin" placeholder="Es administrador">
-            <input type="text" class="form-control col-lg-3 m-2" id="nombre_user" name="Nombre" placeholder="Ingrese Nombre">
-            <input type="text" class="form-control col-lg-3 m-2" id="apellido_user" name="Apellido" placeholder="Ingrese Apellido">
-            <input type="text" class="form-control col-lg-3 m-2" id="telefono_user" name="Telefono" placeholder="Ingrese Telefono">
-            <input type="date" class="form-control col-lg-3 m-2" id="fecha_nacimiento_user" name="FechaNacimiento" placeholder="Ingrese Fecha de nacimiento">
+<partial name="/Views/Shared/_ValidationScriptsPartial.cshtml" />
+
+<div class="text-center">
+    <h3>Nuevo Usuario</h3>
+    <form class="usuarios-form">
+        <input type="text" class="form-control col-lg-3 mb-1 ml-1" id="Email" name="Email" placeholder="Ingrese Email">
+        <input type="password" class="form-control col-lg-3 mb-1 ml-1" id="Password" name="Password" placeholder="Ingrese Contraseña">
+        <div class="">
+            <label class="form-control col-lg-3 mb-1 ml-1" for="EsAdmin">Es administrador</label>
+            <input type="checkbox" class="form-control col-lg-3 mb-1 ml-0" id="EsAdmin" name="EsAdmin">
         </div>
-        <button type="submit" class="btn btn-success m-2" onclick="crear()">Guardar</button>
+        <input type="text" class="form-control col-lg-3 mb-1 ml-1" id="Nombre" name="Nombre" placeholder="Ingrese Nombre">
+        <input type="text" class="form-control col-lg-3 mb-1 ml-1" id="Apellido" name="Apellido" placeholder="Ingrese Apellido">
+        <input type="text" class="form-control col-lg-3 mb-1 ml-1" id="Telefono" name="Telefono" placeholder="Ingrese Telefono">
+        <input type="date" class="form-control col-lg-3 mb-1 ml-1" id="FechaNacimiento" name="FechaNacimiento" placeholder="Ingrese Fecha de nacimiento">
     </form>
-    
-        <div class="text-center mt-2 d-flex">
-
-            <button type="button" class="btn btn-success m-2">Guardar y crear otro</button>
-            <div>
-                <form action="../../Usuarios" method="post">
-                    <button type="submit" class="btn btn-danger">Cancelar</button>
-                </form>
-            </div>
-        </div>
+    <button type="button" id="guardar" class="btn btn-success">Guardar</button>
+    <button type="button" id="guardar_y_limpiar" class="btn btn-success">Guardar y crear otro</button>
+    <button type="button" id="cancelar" class="btn btn-danger">Cancelar</button>
 </div>

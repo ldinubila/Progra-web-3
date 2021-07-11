@@ -1,18 +1,12 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
+using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Progra_web_3_Tp_final
 {
@@ -80,25 +74,41 @@ namespace Progra_web_3_Tp_final
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+          //  app.UseStaticFiles();
+            app.UseSession();
+
             app.Use(async (context, next) =>
             {
-                await next();
-                if (context.Response.StatusCode == 404)
+                var token = context.Session.GetString("Token");
+
+                if (!string.IsNullOrEmpty(token))
                 {
-
-                    context.Request.Path = "/Home/Error";
-
-                    await next();
+                    context.Request.Headers.Add("Authorization", "Bearer " + token);
+                
                 }
+                await next();
             });
+
+
+            //app.Use(async (context, next) =>
+            //{
+            //    await next();
+            //    if (context.Response.StatusCode == 404)
+            //    {
+
+            //        context.Request.Path = "/Home/Error";
+
+            //        await next();
+            //    }
+            //});
+
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseSession();
-
+         
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

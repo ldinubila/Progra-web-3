@@ -1,18 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Session;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Progra_web_3_Tp_final.Models;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
 using Progra_web_3_Tp_final.Servicios;
-using System.Security.Claims;
+using System.Diagnostics;
 
 
 
@@ -38,17 +31,15 @@ namespace Progra_web_3_Tp_final.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            System.Diagnostics.Debug.WriteLine("Prueba");
-            return View();
-        }
-
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        public IActionResult Privacy()
+        {
+            System.Diagnostics.Debug.WriteLine("Prueba");
+            return View();
         }
 
         public IActionResult Ingresar()
@@ -58,7 +49,7 @@ namespace Progra_web_3_Tp_final.Controllers
         }
 
         [HttpPost]
-        public async System.Threading.Tasks.Task<IActionResult> IngresarAsync(string mail, string pass)
+        public IActionResult Ingresar(string mail, string pass)
         {
             _loginServicio.Ingresar(mail, pass, out Usuario usuarioSalida);
             if (usuarioSalida != null)
@@ -66,18 +57,7 @@ namespace Progra_web_3_Tp_final.Controllers
                 string tokengenerado = _tokenServicio.generarToken(usuarioSalida, _configuration);
                 HttpContext.Session.SetString("Token", tokengenerado);
                 var VistaAnteriorSinLogin = HttpContext.Session.GetString("VistaAnteriorSinLogin");
-
-                //var claims = new List<Claim>
-                //{
-                //    new Claim(ClaimTypes.Name, usuarioSalida.Nombre),
-                //    new Claim("username", usuarioSalida.Email),
-                //    new Claim(ClaimTypes.NameIdentifier, usuarioSalida.IdUsuario.ToString()),
-                //    new Claim(ClaimTypes.Role, usuarioSalida.EsAdmin ? "Admin" : "Usuario")
-                //};
-
-                //var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
-                //HttpContext.SignInAsync(new ClaimsPrincipal(claimsIdentity));
+                HttpContext.Session.SetString("EsAdmin", usuarioSalida.EsAdmin ? "Admin" : "Usuario");
 
                 if (VistaAnteriorSinLogin == null)
                     return Redirect("/Pedidos");
@@ -94,14 +74,11 @@ namespace Progra_web_3_Tp_final.Controllers
         }
 
 
-        public IActionResult Logout()
+        public IActionResult Salir()
         {
-
-            HttpContext.SignOutAsync();
-            return Redirect("/Login");
-
+            HttpContext.Session.Clear();
+            return Redirect("/");
         }
-
 
 
     }
