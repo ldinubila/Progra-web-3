@@ -30,16 +30,21 @@ namespace Progra_web_3_Tp_final.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
-            var secretKey = _configuration.GetValue<string>("SecretKey");
+
             string returnView = _navegarServicio.ValidarNavegacion(HttpContext.Session.GetString("Token"), HttpContext.Session.GetString("EsAdmin"), _configuration, 'N', "Pedidos");
 
             if (returnView == "Home")
             {
-                HttpContext.Session.SetString("VistaAnteriorSinLogin", "/Usuarios");
+                HttpContext.Session.SetString("VistaAnteriorSinLogin", "/Pedidos/Index");
                 return Redirect("/Home");
             }
+            if (returnView == "OK")
+                return View(context.Pedidos.Include("IdClienteNavigation").Include("IdEstadoNavigation").ToList());
+            else
+            {
+                return View(returnView);
+            }
 
-            return View(context.Pedidos.Include("IdClienteNavigation").Include("IdEstadoNavigation").ToList());
         }
 
         public IActionResult NuevoPedido()
@@ -57,7 +62,7 @@ namespace Progra_web_3_Tp_final.Controllers
         public ActionResult EditarPedido(Pedido pedido)
         {
             _pedidosServicio.Modificar(pedido);
-            return Redirect("/Pedidos");
+            return Redirect("/Pedidos/Index");
         }
 
         //public ActionResult EditarPedido()

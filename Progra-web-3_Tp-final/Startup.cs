@@ -79,6 +79,15 @@ namespace Progra_web_3_Tp_final
 
             app.Use(async (context, next) =>
             {
+
+                if (context.Response.StatusCode == 404)
+                {
+
+                    context.Request.Path = "/Home/Error";
+
+                    await next();
+                }
+
                 var token = context.Session.GetString("Token");
 
                 if (!string.IsNullOrEmpty(token))
@@ -87,19 +96,15 @@ namespace Progra_web_3_Tp_final
                 
                 }
                 await next();
+
+
             });
 
 
             //app.Use(async (context, next) =>
             //{
             //    await next();
-            //    if (context.Response.StatusCode == 404)
-            //    {
-
-            //        context.Request.Path = "/Home/Error";
-
-            //        await next();
-            //    }
+                
             //});
 
             app.UseStaticFiles();

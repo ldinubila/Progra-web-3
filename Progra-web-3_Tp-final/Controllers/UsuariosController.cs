@@ -37,12 +37,15 @@ namespace Progra_web_3_Tp_final.Controllers
             
             if(returnView=="Home")
             {
-                HttpContext.Session.SetString("VistaAnteriorSinLogin", "/Usuarios");
+                HttpContext.Session.SetString("VistaAnteriorSinLogin", "/Usuarios/Index");
                 return Redirect("/Home");
             }
-
-            // return View(returnView);
-            return View(context.Usuarios.ToList());
+            if(returnView == "OK")
+                return View(context.Usuarios.ToList());
+            else
+            {
+                return View(returnView);
+            }
         }
 
         public IActionResult ShowView()

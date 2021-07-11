@@ -32,16 +32,20 @@ namespace Progra_web_3_Tp_final.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
-            var secretKey = _configuration.GetValue<string>("SecretKey");
             string returnView = _navegarServicio.ValidarNavegacion(HttpContext.Session.GetString("Token"), HttpContext.Session.GetString("EsAdmin"), _configuration, 'Y', "Articulos");
 
             if (returnView == "Home")
             {
-                HttpContext.Session.SetString("VistaAnteriorSinLogin", "/Usuarios");
+                HttpContext.Session.SetString("VistaAnteriorSinLogin", "/Articulos/Index");
                 return Redirect("/Home");
             }
+            if (returnView == "OK")
+                return View(context.Articulos.ToList());
+            else
+            {
+                return View(returnView);
+            }
 
-            return View(context.Articulos.ToList());
         }
         
 
@@ -56,7 +60,7 @@ namespace Progra_web_3_Tp_final.Controllers
             if (ModelState.IsValid)
             {
                 _articulosServicio.Alta(art);
-                return Redirect("/Articulos");
+                return Redirect("/Articulos/Index");
             }
             return View(art);
         }
@@ -71,7 +75,7 @@ namespace Progra_web_3_Tp_final.Controllers
        public ActionResult EditarArticulo(Articulo art)
         {
             _articulosServicio.Modificar(art);
-            return Redirect("/Articulos");
+            return Redirect("/Articulos/Index");
         }
 
         public ActionResult Eliminar(int id)

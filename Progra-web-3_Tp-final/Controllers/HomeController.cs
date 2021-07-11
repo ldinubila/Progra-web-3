@@ -60,7 +60,7 @@ namespace Progra_web_3_Tp_final.Controllers
                 HttpContext.Session.SetString("EsAdmin", usuarioSalida.EsAdmin ? "Admin" : "Usuario");
 
                 if (VistaAnteriorSinLogin == null)
-                    return Redirect("/Pedidos");
+                    return Redirect("/Pedidos/Index");
                 else
                     return Redirect(VistaAnteriorSinLogin);
             }

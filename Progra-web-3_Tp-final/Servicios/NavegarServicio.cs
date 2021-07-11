@@ -11,7 +11,7 @@ namespace Progra_web_3_Tp_final.Servicios
         private TokenServicio _tokenServicio;
         private IConfiguration _configuration;
 
-        public string ValidarNavegacion(string token, string role, IConfiguration config, char AdminView, String View)
+        public string ValidarNavegacion(string token, string role, IConfiguration config, char AdminView, string View)
         {
             _configuration = config;
             _tokenServicio = new TokenServicio();
@@ -23,18 +23,18 @@ namespace Progra_web_3_Tp_final.Servicios
                 return "Home";
             }
 
-
-            if (AdminView == 'Y' && role == "Admin")
+            if (AdminView == 'N')
             {
-                return View;
-            }
-            else if (AdminView == 'Y' && role != "Admin")
-            {
-                return "Error";
+                return "OK";
             }
             else
             {
-                return View;
+                if (role == "Admin")
+                {
+                    return "OK";
+                }
+
+                return "Home";
             }
 
         }

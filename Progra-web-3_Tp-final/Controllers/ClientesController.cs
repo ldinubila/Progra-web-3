@@ -33,16 +33,20 @@ namespace Progra_web_3_Tp_final.Controllers
         public IActionResult Index()
         {
 
-            var secretKey = _configuration.GetValue<string>("SecretKey");
             string returnView = _navegarServicio.ValidarNavegacion(HttpContext.Session.GetString("Token"), HttpContext.Session.GetString("EsAdmin"), _configuration, 'Y', "Clientes");
 
             if (returnView == "Home")
             {
-                HttpContext.Session.SetString("VistaAnteriorSinLogin", "/Usuarios");
+                HttpContext.Session.SetString("VistaAnteriorSinLogin", "/Clientes/Index");
                 return Redirect("/Home");
             }
+            if (returnView == "OK")
+                return View(context.Clientes.ToList());
+            else
+            {
+                return View(returnView);
+            }
 
-            return View(context.Clientes.ToList());
         }
 
         public ActionResult NuevoCliente()
