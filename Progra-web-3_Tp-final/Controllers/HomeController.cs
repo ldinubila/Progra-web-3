@@ -17,6 +17,7 @@ namespace Progra_web_3_Tp_final.Controllers
         private readonly LoginServicio _loginServicio;
         private readonly TokenServicio _tokenServicio;
         private readonly IConfiguration _configuration;
+        
         public HomeController(ILogger<HomeController> logger, IConfiguration config)
         {
             _logger = logger;

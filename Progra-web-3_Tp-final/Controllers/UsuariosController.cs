@@ -48,12 +48,6 @@ namespace Progra_web_3_Tp_final.Controllers
             }
         }
 
-        public IActionResult ShowView()
-        {
-            return View(context.Usuarios.ToList());
-        }
-
-
         public IActionResult NuevoUsuario()
         {
             return View();
@@ -67,14 +61,10 @@ namespace Progra_web_3_Tp_final.Controllers
             
                 _usuariosServicio.CrearNuevo(usuario);
 
-                TempData["Mensaje"] = "TODO OK";
-
-                HttpContext.Session.SetString("MensajeIndex", "El Resultado fue satisfactorio");
-
                 return RedirectToAction("Index");
 
             }
-            return Redirect("/Usuarios");
+            return Redirect("/Usuarios/Index");
         }
         public IActionResult EditarUsuario(int id)
         {
@@ -86,13 +76,13 @@ namespace Progra_web_3_Tp_final.Controllers
         public ActionResult EditarUsuario(Usuario user)
           {
               _usuariosServicio.ModificarUsuario(user);
-              return Redirect("/Usuarios");
+              return Redirect("/Usuarios/Index");
           }
         public ActionResult Eliminar(int id)
         {
             Usuario user = _usuariosServicio.ObtenerPorId(id);
             _usuariosServicio.Eliminar(user);
-            return Redirect("/Usuarios");
+            return Redirect("/Usuarios/Index");
         }
 
     }
