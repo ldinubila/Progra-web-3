@@ -5,7 +5,7 @@
 
 .articulos-form {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     margin: 3% 0;
 }
 
