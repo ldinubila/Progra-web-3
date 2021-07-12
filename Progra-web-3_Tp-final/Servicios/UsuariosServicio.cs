@@ -21,10 +21,17 @@ namespace Progra_web_3_Tp_final.Servicios
             return _dbContext.Usuarios.Find(id);
         }
 
-        public void CrearNuevo(Usuario user)
+        public void Alta(Usuario user)
         {
-         _dbContext.Usuarios.Add(user);
-         _dbContext.SaveChanges();
+           Usuario userComp = _dbContext.Usuarios.Find(user);
+
+            if (user.Email !=userComp.Email&&userComp.FechaBorrado!=null)
+            {
+                _dbContext.Usuarios.Add(user);
+                _dbContext.SaveChanges();
+            }
+            else { }
+     
         }
 
         public void ModificarUsuario(Usuario user)

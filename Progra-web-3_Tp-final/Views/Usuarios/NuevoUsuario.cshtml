@@ -47,12 +47,13 @@
             <span asp-validation-for="FechaNacimiento " class="text-danger"></span>
         </div>
 
-        <button type="submit" id="guardar" class="btn btn-success">Guardar</button>
-        <button type="submit" id="cancelar" class="btn btn-danger">Cancelar</button>
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <button type="submit" class="btn btn-danger">Cancelar</button>
 
         <br />
         <div asp-validation-summary="All" class="text-danger"></div>
-
-
+    </form>
+    <form action="/Usuarios/Index" method="post">
+        <button type="submit" class="btn btn-danger m-2">Cancelar</button>
     </form>
 </div>

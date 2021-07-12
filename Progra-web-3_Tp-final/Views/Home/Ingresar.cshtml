@@ -1,17 +1,32 @@
-﻿@model List<Progra_web_3_Tp_final.Models.Usuario>
+﻿@model Progra_web_3_Tp_final.Models.Usuario
 @{
     ViewData["Title"] = "Home Page";
+    var error = TempData["Error"] as string;
 }
 
-<form action="Home/Ingresar" method="post">
+<partial name="/Views/Shared/_ValidationScriptsPartial.cshtml" />
 
+@if (!string.IsNullOrEmpty(error))
+{
+<h3 class="alert-info">@error</h3>}
 
+<form action="/Home/Ingresar" method="post">
     <div class="text-left mb-4">
-        <h2>Ingresar</h2>
-        Usuario:
-        <input type="text" class="form-control col-4 md-2" name="mail" value="" placeholder="Ingrese Email" />
-        Contraseña:
-        <input type="password" class="form-control col-4 md-2 " name="pass" value="" placeholder="Ingrese contraseña" />
+        <h3>Ingresar</h3>
+        <div class="form-group">
+            <label asp-for="Email" class="control-label">Usuario:</label>
+            <input asp-for="Email" class="form-control">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Password" class="control-label">Contraseña:</label>
+            <input type="password" asp-for="Password" class="form-control">
+            <span asp-validation-for="Password " class="text-danger"></span>
+        </div>
     </div>
-    <input type="submit" class="btn btn-success md-2 " name="Ingresar" value="Ingresar" />
+    <button type="submit" class="btn btn-success">Ingresar</button>
+</form>
+<form action="/Usuarios/Ingresar" method="post">
+    <button type="submit" class="btn btn-danger m-2">Ingresar2</button>
 </form>

@@ -59,7 +59,7 @@ namespace Progra_web_3_Tp_final.Controllers
             if (ModelState.IsValid)
             {
             
-                _usuariosServicio.CrearNuevo(usuario);
+                _usuariosServicio.Alta(usuario);
 
                 return RedirectToAction("Index");
 

@@ -55,24 +55,26 @@ namespace Progra_web_3_Tp_final.Controllers
             _loginServicio.Ingresar(mail, pass, out Usuario usuarioSalida);
             if (usuarioSalida != null)
             {
-                string tokengenerado = _tokenServicio.generarToken(usuarioSalida, _configuration);
-                HttpContext.Session.SetString("Token", tokengenerado);
-                var VistaAnteriorSinLogin = HttpContext.Session.GetString("VistaAnteriorSinLogin");
-                HttpContext.Session.SetString("EsAdmin", usuarioSalida.EsAdmin ? "Admin" : "Usuario");
+            
+                    string tokengenerado = _tokenServicio.generarToken(usuarioSalida, _configuration);
+                    HttpContext.Session.SetString("Token", tokengenerado);
+                    var VistaAnteriorSinLogin = HttpContext.Session.GetString("VistaAnteriorSinLogin");
+                    HttpContext.Session.SetString("EsAdmin", usuarioSalida.EsAdmin ? "Admin" : "Usuario");
 
-                if (VistaAnteriorSinLogin == null)
-                    return Redirect("/Pedidos/Index");
-                else
-                    return Redirect(VistaAnteriorSinLogin);
+                    if (VistaAnteriorSinLogin == null)
+                        return Redirect("/Pedidos/Index");
+                    else
+                        return Redirect(VistaAnteriorSinLogin);
+                
             }
             else
             {
                 TempData["Error"] = "Error. Email o contraseña inválidas";
-
                 return Redirect("/Home");
             }
 
         }
+
 
 
         public IActionResult Salir()
