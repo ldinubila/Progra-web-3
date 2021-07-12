@@ -5,11 +5,12 @@
 
 .articulos-form {
     display: flex;
-    flex-flow: wrap;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     margin: 3% 0;
 }
+
 
 .fecha-borrado {
     display: none;
 }
+

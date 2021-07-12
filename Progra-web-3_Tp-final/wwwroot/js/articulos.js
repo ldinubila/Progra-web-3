@@ -192,42 +192,48 @@ $(document).ready(() => {
         })
     };
 
+    $("#eliminar_articulo").click(() => {
+        const data = collectData3();
+
+        Swal.fire({
+            title: `Eliminar articulo?`,
+            text: `Esta seguro que desea eliminar el articulo: ${data.descripcion}`,
+            icon: 'question',
+            showCancelButton: true,
+        }).then(result => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: `/Articulos/Eliminar/${data.id}`,
+                    success: response => {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: `El articulo: ${data.descripcion} fue eliminado`,
+                            showConfirmButton: false,
+                            timer: 1500
+                        }).then(response => (window.location.href = "/Articulos"));
+                    },
+                    error: error => {
+                        console.log(error);
+                    }
+                });
+            }
+        });
+    });
+
+    const collectData3 = () => {
+        const data = {};
+
+        $(".articulos-form :input").each(function () {
+            data[this.id] = $(this).val();
+        });
+
+        return data;
+    };
+
 
 });
 
 
-$(".eliminar_articulo").click(event => {
-    console.log(this)
-})
 
-function eliminar() {
 
-    valor = $('#boton_eliminar').val();
-    Swal.fire({
-        title: 'Esta seguro que desea eliminar el articulo: ' + valor,
-        text: "Esta acción no se podrá revertir",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Sí, eliminar'
-    }).then((result) => {
-        $.ajax({
-            url: "/Articulos/Eliminar/1",
-            success: response => {
-                Swal.fire(
-                    'Eliminado!',
-                    'El articulo ha sido borrado',
-                    'success'
-                ).then((result) => {
-
-                    window.location = "/Articulos"
-                })
-            }
-            ,
-            error: error => {
-                console.log(error);
-            }
-        });
-    })
-};
