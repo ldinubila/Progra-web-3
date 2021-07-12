@@ -18,9 +18,13 @@ namespace Progra_web_3_Tp_final.Servicios
 
         public Pedido ObtenerPorId(int id)
         {
-            return _dbContext.Pedidos.Include("PedidoArticulos").Include("PedidoArticulos.IdArticuloNavigation").Where(a => a.IdPedido == id).FirstOrDefault();
+            return _dbContext.Pedidos.Include("PedidoArticulos").Include("PedidoArticulos.IdArticuloNavigation").Include("IdEstadoNavigation").Include("IdClienteNavigation").Where(a => a.IdPedido == id).FirstOrDefault();
         }
 
+        public Cliente ObtenerClientePorId(int id)
+        {
+            return _dbContext.Clientes.Find(id);
+        }
         public void Alta(Pedido pedido)
         {
             _dbContext.Pedidos.Add(pedido);
@@ -36,10 +40,43 @@ namespace Progra_web_3_Tp_final.Servicios
             _dbContext.SaveChanges();
         }
 
-        //public void Eliminar(Pedido pedido)
-        //{
-        //    _dbContext.Articulos.Remove(pedido);
-        //    _dbContext.SaveChanges();
-        //}
+        public void Eliminar(int id)
+        {
+            Pedido pedidoNuevo = _dbContext.Pedidos.Find(id);
+            _dbContext.Pedidos.Remove(pedidoNuevo);
+            _dbContext.SaveChanges();
+        }
+
+        public void EliminarArticuloPedido(Pedido pedido)
+        {
+            List<PedidoArticulo> pedidoArticulo = _dbContext.PedidoArticulos.Where(p => p.IdPedido == pedido.IdPedido).ToList();
+            foreach(PedidoArticulo pedart in pedidoArticulo)
+            {
+                _dbContext.PedidoArticulos.Remove(pedart);
+            }
+            _dbContext.SaveChanges();
+        }
+
+        public void CambiarEstadoACerrado(int id)
+        {
+            Pedido pedidoNuevo = _dbContext.Pedidos.Include("IdEstadoNavigation").Where(a => a.IdPedido == id).FirstOrDefault();
+            pedidoNuevo.IdEstado = 2;
+            _dbContext.Pedidos.Attach(pedidoNuevo);
+            _dbContext.SaveChanges();
+
+        }
+
+        public void CambiarEstadoAEntregado(int id)
+        {
+            Pedido pedidoNuevo = _dbContext.Pedidos.Include("IdEstadoNavigation").Where(a => a.IdPedido == id).FirstOrDefault();
+            pedidoNuevo.IdEstado = 3;
+            _dbContext.Pedidos.Attach(pedidoNuevo);
+            _dbContext.SaveChanges();
+        }
+
+        public List<Articulo> ObtenerTodosLosArticulos()
+        {
+            return _dbContext.Articulos.ToList();
+        }
     }
 }
