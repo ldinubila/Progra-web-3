@@ -1,34 +1,55 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Progra_web_3_Tp_final.Models;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Progra_web_3_Tp_final.Models;
 using Progra_web_3_Tp_final.Servicios;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace Progra_web_3_Tp_final.Controllers
 {
+    
+    [Authorize]
     public class UsuariosController : Controller
     {
         _20211CTPContext context;
         private IUsuariosServicio _usuariosServicio;
-    
+        private readonly TokenServicio _tokenServicio;
+        private readonly IConfiguration _configuration;
+        private readonly NavegarServicio _navegarServicio;
 
-        public UsuariosController()
+        public UsuariosController(IConfiguration config)
         {
             context = new _20211CTPContext();
-            _usuariosServicio = new UsuariosServicio(context);
+            _usuariosServicio = new UsuariosServicio(context);  
+            _tokenServicio = new TokenServicio();
+            _configuration = config;
+            _navegarServicio = new NavegarServicio();
+          
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
-            var mensaje = HttpContext.Session.GetString("MensajeIndex");
-
-            if (!string.IsNullOrEmpty(mensaje))
+            var secretKey = _configuration.GetValue<string>("SecretKey");
+            string returnView = _navegarServicio.ValidarNavegacion(HttpContext.Session.GetString("Token"), HttpContext.Session.GetString("EsAdmin"), _configuration, 'Y', "Usuarios");
+            
+            if(returnView=="Home")
             {
+                HttpContext.Session.SetString("VistaAnteriorSinLogin", "/Usuarios/Index");
+                return Redirect("/Home");
             }
+            if(returnView == "OK")
+                return View(context.Usuarios.ToList());
+            else
+            {
+                return View(returnView);
+            }
+        }
 
+        public IActionResult ShowView()
+        {
             return View(context.Usuarios.ToList());
         }
 
@@ -38,7 +59,7 @@ namespace Progra_web_3_Tp_final.Controllers
             return View();
         }
 
-       
+        [HttpPost]
         public IActionResult CrearNuevo(Usuario usuario)
         {
             if (ModelState.IsValid)
@@ -59,8 +80,8 @@ namespace Progra_web_3_Tp_final.Controllers
         {
             Usuario user = _usuariosServicio.ObtenerPorId(id);
             return View(user); 
-            return View(user);
         }
+       
         [HttpPost]
         public ActionResult EditarUsuario(Usuario user)
           {

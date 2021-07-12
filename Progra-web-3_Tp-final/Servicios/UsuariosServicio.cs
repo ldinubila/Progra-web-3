@@ -26,13 +26,17 @@ namespace Progra_web_3_Tp_final.Servicios
         public void ModificarUsuario(Usuario user)
         {
             Usuario userNuevo = ObtenerPorId(user.IdUsuario);
+            if (userNuevo != user)
+            { 
             userNuevo.Email = user.Email;
             userNuevo.Password = user.Password;
             userNuevo.EsAdmin = user.EsAdmin;
             userNuevo.Nombre = user.Nombre;
             userNuevo.Apellido = user.Apellido;
             userNuevo.FechaNacimiento = user.FechaNacimiento;
+            userNuevo.FechaModificacion = DateTime.Now;
             _dbContext.SaveChanges();
+            }
         }
 
         public void Eliminar(Usuario user)
