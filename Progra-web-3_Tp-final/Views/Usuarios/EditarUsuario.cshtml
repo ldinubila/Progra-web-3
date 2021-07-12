@@ -1,51 +1,68 @@
-﻿@model Progra_web_3_Tp_final.Models.Usuario;
-
+﻿@model Progra_web_3_Tp_final.Models.Usuario
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<script src="~/js/usuarios.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+<partial name="/Views/Shared/_ValidationScriptsPartial.cshtml" />
 
-<div class="mt-4">
-
-    <form action="../../Usuarios/EditarUsuario" method="post">
-        <input type="hidden" name="IdUsuario" value="@Model.IdUsuario" />
-        <div>
-
-            <input type="text" class="form-control col-lg-3 m-2" id="email_user" name="Email" placeholder="Ingrese Email" value="@Model.Email">
-
-            <input type="password" class="form-control col-lg-3 m-2" id="password_user" name="Password" placeholder="Ingrese Contraseña" value="@Model.Password">
-            <div class="form-check-label col-lg-9">
-            <label class="form-check-label col-lg-3" for="es_admin">Es administrador</label>
-            <input type="checkbox" class="form-check-input" id="marca_user" name="AdminCheck" placeholder="Es administrador" value="@Model.EsAdmin">
-            </div>
-            <input type="text" class="form-control col-lg-3 m-2" id="nombre_user" name="Nombre" placeholder="Ingrese Nombre" value="@Model.Nombre">
-
-            <input type="text" class="form-control col-lg-3 m-2" id="apellido_user" name="Apellido" placeholder="Ingrese Apellido" value="@Model.Apellido">
-
-            <input type="date" class="form-control col-lg-3 m-2" id="fecha_nacimiento_user" name="Fecha de Nacimiento" placeholder="Ingrese Fecha de nacimiento" value="@Model.FechaNacimiento">
+<div class="text-center">
+    <h3>Editar Usuario</h3>
+    <form class="usuarios-form" list-group-item-action="../../Usuarios/EditarUsuario" method="post">
+        <input type="hidden" name="IdUsuario" value="@Model.IdUsuario">
+        <div class="form-group">
+            <label asp-for="Email" class="control-label"></label>
+            <input asp-for="Email" class="form-control" value="@Model.Email">
+            <span asp-validation-for="Email " class="text-danger"></span>
         </div>
 
-        <button type="submit" class="btn btn-success m-2" onclick="editar()">Modificar</button>
+        <div class="form-group">
+            <label asp-for="Password" class="control-label"></label>
+            <input type="password" asp-for="Password" class="form-control" value="@Model.Password">
+            <span asp-validation-for="Password " class="text-danger"></span>
+        </div>
 
 
+        <div class="form-group">
+            <label asp-for="EsAdmin" class="control-label"></label>
+            <input type="checkbox" asp-for="EsAdmin" class="form-control" value="@Model.EsAdmin">
+            <span asp-validation-for="EsAdmin " class="text-danger"></span>
+        </div>
+
+
+        <div class="form-group">
+            <label asp-for="Nombre" class="control-label"></label>
+            <input asp-for="Nombre" class="form-control" value="@Model.Nombre">
+            <span asp-validation-for="Nombre " class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Apellido" class="control-label"></label>
+            <input asp-for="Apellido" class="form-control" value="@Model.Apellido">
+            <span asp-validation-for="Apellido " class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="FechaNacimiento" class="control-label"></label>
+            <input asp-for="FechaNacimiento" class="form-control" value="@Model.FechaNacimiento">
+            <span asp-validation-for="FechaNacimiento " class="text-danger"></span>
+        </div>
+
+        <button type="submit" id="modificar" class="btn btn-success">Modificar</button>
+        <button type="submit" id="cancelar" class="btn btn-danger">Cancelar</button>
+
+        <br />
+        <div asp-validation-summary="All" class="text-danger"></div>
     </form>
 
-
     <div class="text-center mt-2 d-flex">
-
-        <form action="../../Usuarios/Eliminar/@Model.IdUsuario" method="post">
-            <button type="submit" onclick="eliminar()" class="btn btn-danger m-2">Eliminar</button>
+        <form action="/Usuarios/Eliminar/@Model.IdUsuario" method="post">
+            <button type="submit" class="btn btn-danger m-2">Eliminar</button>
         </form>
     </div>
-     
-    <div class="text-center mt-2 d-flex">
+</div>
 
-            <div>
-                <form action="../../Usuarios" method="post">
-                    <button type="submit" class="btn btn-danger m-2">Cancelar</button>
-                </form>
-           
-    </div>
-    </div>
+
+
+

@@ -12,7 +12,6 @@ namespace Progra_web_3_Tp_final.Servicios
         Usuario ObtenerPorId(int id);
         void CrearNuevo(Usuario user);
         void ModificarUsuario(Usuario user);
-
         void Eliminar(Usuario user);
     }           
 }
