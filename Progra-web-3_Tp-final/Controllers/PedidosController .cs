@@ -28,7 +28,12 @@ namespace Progra_web_3_Tp_final.Controllers
 
         public IActionResult NuevoPedido()
         {
-            return View();
+            ViewBag.TodosLosArticulos = _pedidosServicio.ObtenerTodosLosArticulos();
+            
+            return View(context.Clientes.ToList());
+            //return View(context.Pedidos.Include("IdClienteNavigation").Include("IdEstadoNavigation").ToList());
+            //ViewBag.TodosClientes = _pedidosServicio.ObtenerTodosClientes();
+            //return View();
         }
 
         public ActionResult EditarPedido(int id)
@@ -49,11 +54,34 @@ namespace Progra_web_3_Tp_final.Controllers
         //    return View();
         //}
 
+
         public IActionResult Eliminar(int id)
         {
-            Pedido pedido = _pedidosServicio.ObtenerPorId(id);
-
-            return View();
+            //_pedidosServicio.EliminarArticuloPedido(pedido);
+            _pedidosServicio.Eliminar(id);
+            return Redirect("/Pedidos");
         }
+
+        public IActionResult PedidoCerrado(int id)
+        {
+            _pedidosServicio.CambiarEstadoACerrado(id);
+            return Redirect("/Pedidos");
+        }
+
+        public IActionResult PedidoEntregado(int id)
+        {
+            _pedidosServicio.CambiarEstadoAEntregado(id);
+            return Redirect("/Pedidos");
+        }
+
+        //public IActionResult AgregarPedido(PedidoArticulo pedart,int cant)
+        //{
+        //    if(pedart.IdArticuloNavigation.Descripcion)
+        //    {
+        //        pedart.Cantidad += cant;
+        //    }
+        //    return Redirect("/EditarPedido");
+        //}
+
     }
 }

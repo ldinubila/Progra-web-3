@@ -5,7 +5,6 @@
 
 .pedidos-filters button{
     height:50px;
-    margin-left:900px;
     border-radius:10px;
     width:150px;
 }
@@ -65,9 +64,6 @@ nuevoPedidos-filters button {
     margin-top: 250px;
 }
 
-#example_wrapper {
-    margin-top: 100px;
-}
 
 .cajaComentarios {
     width: 1500px;

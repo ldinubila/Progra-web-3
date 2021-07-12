@@ -12,6 +12,14 @@ namespace Progra_web_3_Tp_final.Servicios
         void Alta(Pedido pedido);
         void Modificar(Pedido pedido);
 
-        //void Eliminar(Pedido pedido);
+        void Eliminar(int id);
+
+        void EliminarArticuloPedido(Pedido pedido);
+
+        void CambiarEstadoACerrado(int id);
+
+        void CambiarEstadoAEntregado(int id);
+
+        List<Articulo> ObtenerTodosLosArticulos();
     }
 }

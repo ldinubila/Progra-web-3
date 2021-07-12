@@ -1,6 +1,6 @@
 ﻿@model List<Progra_web_3_Tp_final.Models.Pedido>
 @{    
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Pedidos";
 }
 <link rel="stylesheet" href="~/css/pedidos.css" />
 <script src="~/js/pedidos.js"></script>
@@ -8,31 +8,19 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
 
 <div class="text-center">
-    <div class="pedidos-filters">
+    <div class="pedidos-filters mb-4">
+        <input type="text" class="form-control col-lg-3" id="buscar_cliente" onkeyup="filtro_cliente()" placeholder="Cliente">
+        <input type="text" class="form-control col-lg-3" id="buscar_estado" onkeyup="filtro_estado()" placeholder="Estado">
+        <div class="form-group form-check col-lg-3">
+            <label class="form-check-label col-lg-9" for="ultimos2_meses">Solo últimos 2 meses</label>
+            <input type="checkbox" id="excluir_eliminados" checked>
+            <label class="form-check-label col-lg-9" for="excluir_eliminados">Excluir eliminados</label>
+            <input type="checkbox" id="excluir_eliminados" checked>
+        </div>
         <form action="../../Pedidos/NuevoPedido" method="post">
             <button type="submit" class="btn btn-success">Nuevo Pedido</button>
         </form>
-        <div class="filtros">
-            <select aria-label="Default select example">
-                @*@foreach (var cliente in Model)
-        {
-            <option value="@cliente.clientes" selected>@cliente</option>
-        }*@
-                <option selected>Cliente</option>
-                <option value="1">Client 1</option>
-            </select>
-            <select aria-label="Default select example">
-                <option selected>Estado</option>
-                <option value="1">Estado 1</option>
-            </select>
-            <div class="form-group form-check col-lg-5">
-                <label class="form-check-label col-lg-7" for="excluir_eliminados">Solo últimos 2 meses</label>
-                <input type="checkbox" class="form-check-input" id="excluir_eliminados">
-                <label class="form-check-label col-lg-7" for="excluir_eliminados">Excluir eliminados</label>
-                <input type="checkbox" class="form-check-input" id="excluir_eliminados">
-                </div>
-            </div>
-        </div>
+    </div>
     <table id="example" class="display" style="width:100%">
         <thead>
             <tr>
@@ -43,14 +31,18 @@
             </tr>
         </thead>
         @foreach (Pedido pedido in Model)
-        {
-            <tr>
-                <td>@pedido.IdClienteNavigation.Nombre - #@pedido.NroPedido</td>
-                <td>@pedido.IdEstadoNavigation.Descripcion</td>
-                <td>@pedido.FechaModificacion</td>
-                <td><a href="/Pedidos/EditarPedido/@pedido.IdPedido">Ver</a></td>
-            </tr>
-         }
+            if (pedido.FechaBorrado == null)
+            {
+                {
+                    <tr>
+                        <td>@pedido.IdClienteNavigation.Nombre - #@pedido.NroPedido</td>
+                        <td id="estado">@pedido.IdEstadoNavigation.Descripcion</td>
+                        <td>@pedido.FechaCreacion @*(@pedido.CreadoPorNavigation.Nombre)*@</td>
+                        <td><a href="/Pedidos/EditarPedido/@pedido.IdPedido" onclick="validarEstado()">Ver</a></td>
+                    </tr>
+                }
+            }
+
     </table>
  </div>
 

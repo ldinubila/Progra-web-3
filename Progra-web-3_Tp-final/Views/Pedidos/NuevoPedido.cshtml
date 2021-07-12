@@ -1,5 +1,7 @@
-﻿@{
+﻿@model List<Progra_web_3_Tp_final.Models.Cliente>
+@{
     ViewData["Title"] = "Home Page";
+    List<Progra_web_3_Tp_final.Models.Articulo> articulos = ViewBag.TodosLosArticulos;
 }
 <link rel="stylesheet" href="~/css/nuevoPedido.css" />
 <script src="~/js/pedidos.js"></script>
@@ -8,30 +10,34 @@
 
 <div class="text-center">
     <div class="nuevoPedidos-filters">
-        <a href="../../Pedidos/Index" >Volver</a>
+        <a href="../../Pedidos/Index">Volver</a>
         <div class="selectCliente">
             <select aria-label="Default select example">
                 <option selected>Cliente</option>
-                <option value="1">Cliente 1</option>
-                <option value="2">Cliente 2</option>
-                <option value="3">Cliente 3</option>
+                @foreach(Cliente cliente in Model)
+            {
+                <option value=@cliente.IdCliente>@cliente.Nombre</option>
+            }
             </select>
-            </div>
+        </div>
         <div class="selectDescripcion">
             <select aria-label="Default select example">
                 <option selected>Descripcion o codigo</option>
-                <option value="1">Descripcion o codigo 1</option>
-                <option value="2">Descripcion o codigo 2</option>
-                <option value="3">Descripcion o codigo 3</option>
+                @foreach (Articulo art in articulos)
+                {
+                    <option value=@art.IdArticulo>@art.Descripcion - @art.Codigo</option>
+                }
             </select>
-            <input type="text" placeholder="Cantidad"/>
+            <input type="text" placeholder="Cantidad" />
             <form action="../../Pedidos/NuevoPedido" method="post">
                 <button type="submit" class="btn btn-success">Agregar</button>
             </form>
         </div>
-        </div>
-      
     </div>
+
+</div>
+
+<form class="pedidos-form">
     <table id="example" class="display" style="width:100%">
         <thead>
             <tr>
@@ -42,172 +48,23 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Sanitarios Rodriguez - #20</td>
-                <td>Abierto</td>
-                <td>Hace 2 minutos (Damian)</td>
-                <td><a href="#">Ver</a></td>
-            </tr>
-            <tr>
-                <td>Sanitarios Rodriguez - #20</td>
-                <td>Abierto</td>
-                <td>Hace 2 minutos (Damian)</td>
-                <td><a href="#">Ver</a></td>
-            </tr>
-            <tr>
-                <td>Sanitarios Rodriguez - #20</td>
-                <td>Abierto</td>
-                <td>Hace 2 minutos (Damian)</td>
-                <td><a href="#">Ver</a></td>
-            </tr>
-            <tr>
-                <td>Sanitarios Rodriguez - #20</td>
-                <td>Abierto</td>
-                <td>Hace 2 minutos (Damian)</td>
-                <td><a href="#">Ver</a></td>
-            </tr>
-            <tr>
-                <td>Sanitarios Rodriguez - #20</td>
-                <td>Abierto</td>
-                <td>Hace 2 minutos (Damian)</td>
-                <td><a href="#">Ver</a></td>
-            </tr>
-            <tr>
-                <td>Sanitarios Rodriguez - #20</td>
-                <td>Abierto</td>
-                <td>Hace 2 minutos (Damian)</td>
-                <td><a href="#">Ver</a></td>
-            </tr>
-            <tr>
-                <td>Sanitarios Rodriguez - #20</td>
-                <td>Abierto</td>
-                <td>Hace 2 minutos (Damian)</td>
-                <td><a href="#">Ver</a></td>
-            </tr>
-            <tr>
-                <td>Sanitarios Rodriguez - #20</td>
-                <td>Abierto</td>
-                <td>Hace 2 minutos (Damian)</td>
-                <td><a href="#">Ver</a></td>
-            </tr>
-            <tr>
-                <td>Sanitarios Rodriguez - #20</td>
-                <td>Abierto</td>
-                <td>Hace 2 minutos (Damian)</td>
-                <td><a href="#">Ver</a></td>
-            </tr>
-            <tr>
-                <td>Sanitarios Rodriguez - #20</td>
-                <td>Abierto</td>
-                <td>Hace 2 minutos (Damian)</td>
-                <td><a href="#">Ver</a></td>
-            </tr>
-            <tr>
-                <td>Sanitarios Rodriguez - #20</td>
-                <td>Abierto</td>
-                <td>Hace 2 minutos (Damian)</td>
-                <td><a href="#">Ver</a></td>
-            </tr>
-            <tr>
-                <td>Sanitarios Rodriguez - #20</td>
-                <td>Abierto</td>
-                <td>Hace 2 minutos (Damian)</td>
-                <td><a href="#">Ver</a></td>
-            </tr>
-            <tr>
-                <td>Sanitarios Rodriguez - #20</td>
-                <td>Abierto</td>
-                <td>Hace 2 minutos (Damian)</td>
-                <td><a href="#">Ver</a></td>
-            </tr>
-            <tr>
-                <td>Sanitarios Rodriguez - #20</td>
-                <td>Abierto</td>
-                <td>Hace 2 minutos (Damian)</td>
-                <td><a href="#">Ver</a></td>
-            </tr>
-            <tr>
-                <td>Sanitarios Rodriguez - #20</td>
-                <td>Abierto</td>
-                <td>Hace 2 minutos (Damian)</td>
-                <td><a href="#">Ver</a></td>
-            </tr>
-            <tr>
-                <td>Sanitarios Rodriguez - #20</td>
-                <td>Abierto</td>
-                <td>Hace 2 minutos (Damian)</td>
-                <td><a href="#">Ver</a></td>
-            </tr>
-            <tr>
-                <td>Sanitarios Rodriguez - #20</td>
-                <td>Abierto</td>
-                <td>Hace 2 minutos (Damian)</td>
-                <td><a href="#">Ver</a></td>
-            </tr>
-            <tr>
-                <td>Sanitarios Rodriguez - #20</td>
-                <td>Abierto</td>
-                <td>Hace 2 minutos (Damian)</td>
-                <td><a href="#">Ver</a></td>
-            </tr>
-            <tr>
-                <td>Sanitarios Rodriguez - #20</td>
-                <td>Abierto</td>
-                <td>Hace 2 minutos (Damian)</td>
-                <td><a href="#">Ver</a></td>
-            </tr>
-            <tr>
-                <td>Sanitarios Rodriguez - #20</td>
-                <td>Abierto</td>
-                <td>Hace 2 minutos (Damian)</td>
-                <td><a href="#">Ver</a></td>
-            </tr>
-            <tr>
-                <td>Sanitarios Rodriguez - #20</td>
-                <td>Abierto</td>
-                <td>Hace 2 minutos (Damian)</td>
-                <td><a href="#">Ver</a></td>
-            </tr>
-            <tr>
-                <td>Sanitarios Rodriguez - #20</td>
-                <td>Abierto</td>
-                <td>Hace 2 minutos (Damian)</td>
-                <td><a href="#">Ver</a></td>
-            </tr>
-            <tr>
-                <td>Sanitarios Rodriguez - #20</td>
-                <td>Abierto</td>
-                <td>Hace 2 minutos (Damian)</td>
-                <td><a href="#">Ver</a></td>
-            </tr>
-            <tr>
-                <td>Sanitarios Rodriguez - #20</td>
-                <td>Abierto</td>
-                <td>Hace 2 minutos (Damian)</td>
-                <td><a href="#">Ver</a></td>
-            </tr>
-            <tr>
-                <td>Sanitarios Rodriguez - #20</td>
-                <td>Abierto</td>
-                <td>Hace 2 minutos (Damian)</td>
-                <td><a href="#">Ver</a></td>
-            </tr>
         </tbody>
     </table>
     <div class="cajaComentarios">
-        <label  for="excluir_eliminados">Comentarios</label>
+        <label for="comentarios">Comentarios</label>
         <textarea name="textarea" rows="10" cols="150">Escribe aquí</textarea>
     </div>
-    <div class="botonesFinal">
-        <form action="../../Pedidos/NuevoPedido" method="post">
-            <button type="submit" class="btn btn-success">Guardar</button>
-        </form>
-        <form action="../../Pedidos/NuevoPedido" method="post">
-            <button type="submit" class="btn btn-success">Guardar y crear otro</button>
-        </form>
-        <form action="../../Pedidos/NuevoPedido" method="post">
-            <button type="submit" class="btn btn-success">Volver</button>
-        </form>
-    </div>  
+</form>
+<div class="botonesFinal">
+
+    <button type="submit" class="btn btn-success">Guardar</button>
+
+
+    <button type="submit" class="btn btn-success" id="guardar_y_limpiar">Guardar y crear otro</button>
+
+    <form action="../../Pedidos/Index" method="post">
+        <button type="submit" class="btn btn-success">Volver</button>
+    </form>
 </div>
-   
+
+
