@@ -39,12 +39,14 @@ namespace Progra_web_3_Tp_final.Controllers
         public ActionResult EditarPedido(int id)
         {
             Pedido pedido = _pedidosServicio.ObtenerPorId(id);
+            ViewBag.TodosLosArticulos = _pedidosServicio.ObtenerTodosLosArticulos();
             return View(pedido);
         }
 
         [HttpPost]
         public ActionResult EditarPedido(Pedido pedido)
         {
+            
             _pedidosServicio.Modificar(pedido);
             return Redirect("/Pedidos");
         }
@@ -83,5 +85,10 @@ namespace Progra_web_3_Tp_final.Controllers
         //    return Redirect("/EditarPedido");
         //}
 
+        public ActionResult Alta(Pedido pedido)
+        {
+            _pedidosServicio.Alta(pedido);
+            return Redirect("/Pedidos");
+        }
     }
 }
