@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BundlerMinifier.TagHelpers;
 
 namespace Progra_web_3_Tp_final
 {
@@ -30,6 +31,10 @@ namespace Progra_web_3_Tp_final
             {
                 options.Cookie.Name = ".MiAPP.Session";
                 options.IdleTimeout = TimeSpan.FromSeconds(60);
+            });
+            services.AddBundles(options =>
+            {
+                options.AppendVersion = true;
             });
         }
 

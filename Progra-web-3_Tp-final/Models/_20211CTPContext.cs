@@ -33,8 +33,9 @@ namespace Progra_web_3_Tp_final.Models
 
                 // _ = optionsBuilder.UseSqlServer("Server=DESKTOP-T8Q8T2L\\SQLEXPRESS;Database=2021-1C-TP;Trusted_Connection=True;");
                 // _ = optionsBuilder.UseSqlServer("Server=DESKTOP-KJ93ABG\\SQLEXPRESS;Database=2021-1C-TP;Trusted_Connection=True;");
-                //_ = optionsBuilder.UseSqlServer("Server=127.0.0.1,1433;Database=2021-1C-TP;User=sa;Password=qwertY12@3;");
-                _ = optionsBuilder.UseSqlServer("Server=ITRP0606;Database=2021-1C-TP;Trusted_Connection=True;");
+                _ = optionsBuilder.UseSqlServer("Server=127.0.0.1,1433;Database=2021-1C-TP;User=sa;Password=qwertY12@3;");
+                //_ = optionsBuilder.UseSqlServer("Server=ITRP0606;Database=2021-1C-TP;Trusted_Connection=True;");
+
 
             }
         }
@@ -91,6 +92,8 @@ namespace Progra_web_3_Tp_final.Models
                 entity.Property(e => e.Cuit)
                     .HasMaxLength(50)
                     .HasColumnName("CUIT");
+
+                entity.HasIndex(e => e.Numero).IsUnique();
 
                 entity.Property(e => e.Direccion).HasMaxLength(300);
 
