@@ -5,28 +5,20 @@
 }
 
 <partial name="/Views/Shared/_ValidationScriptsPartial.cshtml" />
-
+<h3>Ingresar</h3>
 @if (!string.IsNullOrEmpty(error))
 {
-<h3 class="alert-info">@error</h3>}
+    <h3 class="alert-info">@error</h3>
+}
 
-<form action="/Home/Ingresar" method="post">
-    <div class="text-left mb-4">
-        <h3>Ingresar</h3>
-        <div class="form-group">
-            <label asp-for="Email" class="control-label">Usuario:</label>
-            <input asp-for="Email" class="form-control">
-            <span asp-validation-for="Email" class="text-danger"></span>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="Password" class="control-label">Contraseña:</label>
-            <input type="password" asp-for="Password" class="form-control">
-            <span asp-validation-for="Password " class="text-danger"></span>
-        </div>
+<form action="Home/Ingresar" method="post">
+    <div class="form-group">
+        <input type="text" asp-for="Email" class="form-control" placeholder="Ingresar email">
+        <small><span asp-validation-for="Email" class="text-danger"></span></small>
     </div>
-    <button type="submit" class="btn btn-success">Ingresar</button>
-</form>
-<form action="/Usuarios/Ingresar" method="post">
-    <button type="submit" class="btn btn-danger m-2">Ingresar2</button>
+    <div class="form-group">
+        <input type="password" asp-for="Password" class="form-control" placeholder="Ingresar Contraseña">
+        <small><span asp-validation-for="Password" class="text-danger"></span></small>
+    </div>
+    <input type="submit" class="btn btn-success md-2 " name="Ingresar" value="Ingresar" />
 </form>

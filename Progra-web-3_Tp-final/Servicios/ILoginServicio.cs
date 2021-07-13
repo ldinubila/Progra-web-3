@@ -9,10 +9,6 @@ namespace Progra_web_3_Tp_final.Servicios
 
     public interface ILoginServicio
     {
-
-        bool Ingresar(String mail, String pass, out Usuario usuarioSalida);
-        public void LogOut(string UsSession);
-
-
+       bool Ingresar(string nombre, string password,  out Usuario usuarioSalida);
     }
 }

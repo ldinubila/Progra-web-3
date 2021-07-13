@@ -92,3 +92,42 @@ function filtro_eliminados() {
         }
     }
 };
+
+$("#eliminar").click(() => {
+    const data = collectData();
+
+    Swal.fire({
+        title: `Eliminar usuario?`,
+        text: `Esta seguro que desea eliminar al usuario: ${data.nombre}`,
+        icon: 'question',
+        showCancelButton: true,
+    }).then(result => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: `/Usuarios/Eliminar/${data.id}`,
+                success: response => {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `El usuario: ${data.nombre} fue eliminado`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(response => (window.location.href = "/Usuarios/Index"));
+                },
+                error: error => {
+                    console.log(error);
+                }
+            });
+        }
+    });
+});
+
+const collectData = () => {
+    const data = {};
+
+    $(".usuarios-form :input").each(function () {
+        data[this.id] = $(this).val();
+    });
+
+    return data;
+};
