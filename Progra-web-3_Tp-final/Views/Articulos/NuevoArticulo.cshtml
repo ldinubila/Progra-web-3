@@ -2,13 +2,10 @@
 @{
     ViewData["Title"] = "Nuevo Articulo";
 }
-<script src="~/js/articulos.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 
 <div class="text-center">
     <h3>Nuevo Articulo</h3>
-    <form asp-action="NuevoArticulo" asp-controller="Articulos" method="post" class="articulos-form">
+    <form asp-action="NuevoArticulo" asp-controller="Articulos" method="post">
         <div class="form-group d-flex">
             <input type="text" class="form-control col-lg-3 mb-2 ml-1" id="Codigo" name="Codigo" asp-for="Codigo" placeholder="Código">
             <span asp-validation-for="Codigo" class="ml-2 text-danger"></span>
@@ -17,11 +14,13 @@
             <input type="text" class="form-control col-lg-3 mb-1 ml-1" id="Descripcion" name="Descripcion" placeholder="Descripción">
             <span asp-validation-for="Descripcion" class="ml-2 text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-success mt-2">Guardar</button> 
+        <div>
+            <button type="submit" class="btn btn-success">Guardar</button>
+            <button type="submit" class="btn btn-danger" id="cancelar">Cancelar</button>
+        </div>
     </form>
-    <!-- <button type="button" class="btn btn-success" id="guardar">Guardar</button> -->
-    <button type="button" class="btn btn-success" id="guardar_y_limpiar">Guardar y crear otro</button>
-    <button type="submit" class="btn btn-danger" id="cancelar">Cancelar</button>
+
+    
 </div>
 
 @section Scripts

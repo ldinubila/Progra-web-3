@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Progra_web_3_Tp_final.Models;
 using Progra_web_3_Tp_final.Servicios;
 using System;
@@ -8,20 +11,41 @@ using System.Threading.Tasks;
 
 namespace Progra_web_3_Tp_final.Controllers
 {
+    [Authorize]
     public class ArticulosController : Controller
     {
         _20211CTPContext context;
         private IArticulosServicio _articulosServicio;
+        private readonly TokenServicio _tokenServicio;
+        private readonly IConfiguration _configuration;
+        private readonly NavegarServicio _navegarServicio;
 
-        public ArticulosController()
+        public ArticulosController(IConfiguration config)
         {
             context = new _20211CTPContext();
             _articulosServicio = new ArticulosServicio(context);
+            _tokenServicio = new TokenServicio();
+            _configuration = config;
+            _navegarServicio = new NavegarServicio();
         }
-
+        
+        [AllowAnonymous]
         public IActionResult Index()
         {
-            return View(context.Articulos.ToList());
+            string returnView = _navegarServicio.ValidarNavegacion(HttpContext.Session.GetString("Token"), HttpContext.Session.GetString("EsAdmin"), _configuration, 'Y', "Articulos");
+
+            if (returnView == "Home")
+            {
+                HttpContext.Session.SetString("VistaAnteriorSinLogin", "/Articulos/Index");
+                return Redirect("/Home");
+            }
+            if (returnView == "OK")
+                return View(context.Articulos.ToList());
+            else
+            {
+                return View(returnView);
+            }
+
         }
         
 
@@ -36,7 +60,7 @@ namespace Progra_web_3_Tp_final.Controllers
             if (ModelState.IsValid)
             {
                 _articulosServicio.Alta(art);
-                return Redirect("/Articulos");
+                return Redirect("/Articulos/Index");
             }
             return View(art);
         }
@@ -51,7 +75,7 @@ namespace Progra_web_3_Tp_final.Controllers
        public ActionResult EditarArticulo(Articulo art)
         {
             _articulosServicio.Modificar(art);
-            return Redirect("/Articulos");
+            return Redirect("/Articulos/Index");
         }
 
         public ActionResult Eliminar(int id)

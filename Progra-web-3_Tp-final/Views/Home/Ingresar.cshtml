@@ -1,0 +1,17 @@
+﻿@model List<Progra_web_3_Tp_final.Models.Usuario>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form action="Home/Ingresar" method="post">
+
+
+    <div class="text-left mb-4">
+        <h2>Ingresar</h2>
+        Usuario:
+        <input type="text" class="form-control col-4 md-2" name="mail" value="" placeholder="Ingrese Email" />
+        Contraseña:
+        <input type="password" class="form-control col-4 md-2 " name="pass" value="" placeholder="Ingrese contraseña" />
+    </div>
+    <input type="submit" class="btn btn-success md-2 " name="Ingresar" value="Ingresar" />
+</form>

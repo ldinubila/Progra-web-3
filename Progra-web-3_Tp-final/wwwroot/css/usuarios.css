@@ -9,7 +9,12 @@
     border-radius: 10px;
     width: 150px;
 }
-
+.usuarios-form {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-evenly;
+    margin: 3% 0;
+}
 
 .filtros {
     margin-top: 100px;

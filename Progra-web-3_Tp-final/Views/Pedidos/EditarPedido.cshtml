@@ -1,73 +1,87 @@
 ﻿@model Progra_web_3_Tp_final.Models.Pedido
-    
+
 @{
     ViewData["Title"] = "Home Page";
+    List<Progra_web_3_Tp_final.Models.Articulo> articulos = ViewBag.TodosLosArticulos;
 }
 <link rel="stylesheet" href="~/css/editarPedido.css" />
 <script src="~/js/pedidos.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
 
+@*@if (Model.IdEstadoNavigation.Descripcion == "Entregado")
+{
+    @:validarEstado();
+}*@
 
-<div class="text-center">
-    <div class="nuevoPedidos-filters">
-        <a href="../../Pedidos/Index" >Volver</a>
-        <div class="selectDescripcion">
-            <select aria-label="Default select example">
-                <option selected>Descripcion o codigo</option>
-                <option value="1">Descripcion o codigo 1</option>
-                <option value="2">Descripcion o codigo 2</option>
-                <option value="3">Descripcion o codigo 3</option>
-            </select>
-            <input type="text" placeholder="Cantidad"/>
-            <form action="../../Pedidos/NuevoPedido" method="post">
-                <button type="submit" class="btn btn-success">Agregar</button>
-            </form>
-        </div>
+
+
+    <div class="text-center">
+        <div class="nuevoPedidos-filters">
+            <a href="../../Pedidos/Index">Volver</a>
+            <div class="selectDescripcion">
+                <select aria-label="Default select example">
+                    <option selected>Descripcion o codigo</option>
+                    
+                    @foreach (Articulo art in articulos)
+        {
+            <option value=@art.IdArticulo>@art.Descripcion - @art.Codigo</option>
+        }
+                </select>
+                <input type="text" placeholder="Cantidad" />
+                <form action="../../Pedidos/AgregarPedido" method="post">
+                    <button type="submit" class="btn btn-success">Agregar</button>
+                </form>
+            </div>
         </div>
     </div>
-<table id="example" class="display text-center" style="width:100%">
-    <thead>
-        <tr>
-            <th>Descripcion</th>
-            <th>Código</th>
-            <th>Cantidad</th>
-            <th>Ver</th>
-        </tr>
-    </thead>
-       
+    <table id="example" class="display text-center" style="width:100%">
+        <thead>
+            <tr>
+                <th>Descripcion</th>
+                <th>Código</th>
+                <th>Cantidad</th>
+                <th>Ver</th>
+            </tr>
+        </thead>
+
         @foreach (PedidoArticulo pedart in Model.PedidoArticulos)
         {
             <tr>
                 <td>@pedart.IdArticuloNavigation.Descripcion</td>
                 <td>@pedart.IdArticuloNavigation.Codigo</td>
                 <td>@pedart.Cantidad</td>
-                <td><a class="eliminar" href="/Pedidos/Eliminar">Quitar</a></td>
+                <td><a class="boton_eliminar" href="/Pedidos/Eliminar">Quitar</a></td>
             </tr>
         }
-</table>
+    </table>
     <div class="cajaComentarios">
-        <label  for="excluir_eliminados">Comentarios</label>
+        <label for="excluir_eliminados">Comentarios</label>
         <textarea name="textarea" rows="10" cols="150">Escribe aquí</textarea>
     </div>
-    <button type="submit" class="btn btn-success">Guardar</button>
-
     <div class="botonesFinal">
-        <form action="../../Pedidos/NuevoPedido" method="post">
+        <form action="../../Pedidos/" method="post">
             <button type="submit" class="btn btn-success">Guardar</button>
         </form>
         <form action="../../Pedidos/Index" method="post">
             <button type="submit" class="btn btn-success">Volver</button>
         </form>
-        <form action="../../Pedidos/NuevoPedido" method="post">
+
+        <form action="../../Pedidos/PedidoCerrado" method="post">
+            <input type="hidden" value="@Model.IdPedido" name="id" />
             <button type="submit" class="btn btn-success">Cerrar</button>
         </form>
-        <form action="../../Pedidos/NuevoPedido" method="post">
+        <form action="../../Pedidos/PedidoEntregado" method="post">
+            <input type="hidden" value="@Model.IdPedido" name="id" />
             <button type="submit" class="btn btn-success">Entregado</button>
         </form>
+
+
+
         <form action="../../Pedidos/Eliminar" method="post">
+            <input type="hidden" value="@Model.IdPedido" name="id" />
             <button type="submit" class="btn btn-success">Eliminar</button>
         </form>
-    </div>  
+    </div>
 
-   
+

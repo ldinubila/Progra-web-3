@@ -1,22 +1,22 @@
-﻿@model Progra_web_3_Tp_final.Models.Articulo;
+@model Progra_web_3_Tp_final.Models.Articulo;
 @{
     ViewData["Title"] = "Editar Articulo";
 }
-<script src="~/js/articulos.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
 
 <div class="text-center">
     <h3>Editar Articulo</h3>
     <form class="articulos-form">
         <input type="hidden" id="IdArticulo" name="IdArticulo" value="@Model.IdArticulo" />
+        <input type="hidden" id="id" name="id" value="@Model.IdArticulo" />
         <div>
-            <input type="text" class="form-control col-lg-3 mb-2" id="Codigo" name="Codigo" placeholder="Código" required value="@Model.Codigo">
-            <input type="text" class="form-control col-lg-3" id="Descripcion" name="Descripcion" placeholder="Descripción" required value="@Model.Descripcion">
+            <input type="text" class="form-control mb-2" id="codigo" name="Codigo" placeholder="Código" required value="@Model.Codigo">
+            <input type="text" class="form-control mt-2" id="descripcion" name="Descripcion" placeholder="Descripción" required value="@Model.Descripcion">
         </div>
-
-
     </form>
-    <button type="button" class="btn btn-success mt-2" id="editar">Modificar</button>
-    <button type="button" class="btn btn-danger mt-2" id="cancelar">Cancelar</button>
+    <button type="button" class="btn btn-success" id="editar">Modificar</button>
+    <button type="button" id="eliminar_articulo" class="btn btn-danger">Eliminar</button>
+    <button type="button" class="btn btn-danger" id="cancelar">Cancelar</button>
 
 </div>

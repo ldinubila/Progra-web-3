@@ -13,7 +13,7 @@
         });
     });
 
-    $("#eliminar").click(() => {
+    $("#eliminar_cliente").click(() => {
         const data = collectData();
 
         console.log('-----', data);
