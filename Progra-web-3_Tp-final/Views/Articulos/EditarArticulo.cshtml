@@ -8,10 +8,11 @@
 <div class="text-center">
     <h3>Editar Articulo</h3>
     <form class="articulos-form">
+        <input type="hidden" id="IdArticulo" name="IdArticulo" value="@Model.IdArticulo" />
         <input type="hidden" id="id" name="id" value="@Model.IdArticulo" />
         <div>
-            <input type="text" class="form-control mb-2" id="codigo" name="codigo" placeholder="Código" required value="@Model.Codigo">
-            <input type="text" class="form-control mt-2" id="descripcion" name="descripcion" placeholder="Descripción" required value="@Model.Descripcion">
+            <input type="text" class="form-control mb-2" id="codigo" name="Codigo" placeholder="Código" required value="@Model.Codigo">
+            <input type="text" class="form-control mt-2" id="descripcion" name="Descripcion" placeholder="Descripción" required value="@Model.Descripcion">
         </div>
     </form>
     <button type="button" class="btn btn-success" id="editar">Modificar</button>

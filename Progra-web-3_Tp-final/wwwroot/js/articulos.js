@@ -100,20 +100,10 @@ $(document).ready(() => {
         const data = collectData();
 
         guardar(data, () => {
-            window.location.href = "/Articulos";
+            window.location.href = "/Articulos/Index";
         });
     });
 
-    $("#guardar_y_limpiar").click(() => {
-        const data = collectData();
-        guardar(data, limpiarForm);
-    });
-
-    const limpiarForm = () => {
-        $(".articulos-form :input").each(function () {
-            $(this).val("");
-        });
-    }
 
     const collectData = () => {
         const data = {};
@@ -126,7 +116,7 @@ $(document).ready(() => {
     };
 
     async function guardar(data, callback) {
-        var descripcion = $("#Descripcion").val();
+        var descripcion = $("#descripcion").val();
         Swal.fire(
             `Articulo ${descripcion} creado con éxito`,
             'Haga click para continuar',
@@ -147,14 +137,14 @@ $(document).ready(() => {
     };
 
     $("#cancelar").click(() => {
-        window.location.href = "/Articulos";
+        window.location.href = "/Articulos/Index";
     });
 
     $("#editar").click(() => {
         const data = collectData2();
 
         editar(data, () => {
-            window.location.href = "/Articulos";
+            window.location.href = "/Articulos/Index";
         });
     });
 
@@ -171,7 +161,7 @@ $(document).ready(() => {
 
 
     async function editar(data, callback) {
-        var descripcion = $("#Descripcion").val();
+        var descripcion = $("#descripcion").val();
         Swal.fire(
             `Articulo ${descripcion} modificado con exito`,
             'Haga click para continuar',
@@ -211,7 +201,7 @@ $(document).ready(() => {
                             title: `El articulo: ${data.descripcion} fue eliminado`,
                             showConfirmButton: false,
                             timer: 1500
-                        }).then(response => (window.location.href = "/Articulos"));
+                        }).then(response => (window.location.href = "/Articulos/Index"));
                     },
                     error: error => {
                         console.log(error);
