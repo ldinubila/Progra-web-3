@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 #nullable disable
 
 namespace Progra_web_3_Tp_final.Models
@@ -13,7 +14,11 @@ namespace Progra_web_3_Tp_final.Models
         }
 
         public int IdCliente { get; set; }
+
+        [Range(0, int.MaxValue, ErrorMessage = "El numero debe contener solo numeros")]
         public int Numero { get; set; }
+
+        [Required(ErrorMessage = "El Nombre es requerido")]
         public string Nombre { get; set; }
         public string Telefono { get; set; }
         public string Email { get; set; }

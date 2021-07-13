@@ -11,6 +11,7 @@ namespace Progra_web_3_Tp_final.Servicios
     {
         Cliente ObtenerPorId(int id);
         void Alta(Cliente cliente);
+        void Modificar(Cliente cliente);
         void Eliminar(Cliente cliente);
     }
 }

@@ -59,10 +59,31 @@ namespace Progra_web_3_Tp_final.Controllers
             return View(_clienteServicio.ObtenerPorId(id));
         }
 
-        public StatusCodeResult Alta(Cliente cliente)
+        public IActionResult Alta(Cliente data)
         {
-            _clienteServicio.Alta(cliente);
-            return Ok();
+            if (ModelState.IsValid)
+            {
+                _clienteServicio.Alta(data);
+
+                return Redirect("/Clientes");
+
+            }
+
+            return View("NuevoCliente", data);
+        }
+
+        [HttpPost]
+        public ActionResult EditarCliente(Cliente data)
+        {
+            if (ModelState.IsValid)
+            {
+                _clienteServicio.Modificar(data);
+
+                return Redirect("/Clientes");
+
+            }
+
+            return View("EditarCliente", data);
         }
 
         public StatusCodeResult Eliminar(int id) {

@@ -3,19 +3,49 @@
 }
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+@model Cliente
 
 <div class="text-center">
     <h3>EditarCliente</h3>
-    <form class="clientes-form">
-        <input type="hidden" class="form-control col-lg-3 mb-1 ml-1" id="id" value="@Model.IdCliente">
-        <input type="text" class="form-control col-lg-3 mb-1 ml-1" id="nombre" placeholder="Nombre" value="@Model.Nombre">
-        <input type="text" class="form-control col-lg-3 mb-1 ml-1" id="numero" placeholder="Numero" value="@Model.Numero">
-        <input type="text" class="form-control col-lg-3 mb-1 ml-1" id="telefono" placeholder="Telefono" value="@Model.Telefono">
-        <input type="text" class="form-control col-lg-3 mb-1 ml-1" id="email" placeholder="Email" value="@Model.Email">
-        <input type="text" class="form-control col-lg-3 mb-1 ml-1" id="direccion" placeholder="Direccion" value="@Model.Direccion">
-        <input type="text" class="form-control col-lg-3 mb-1 ml-1" id="cuit" placeholder="CUIT" value="@Model.Cuit">
+    <form class="clientes-form" asp-action="EditarCliente" asp-controller="Clientes" method="post">
+        <input type="hidden" id="IdCliente" name="IdCliente" value="@Model.IdCliente" />
+        <div class="form-group col-lg-3 mb-1 ml-1">
+            <label asp-for="Nombre" class="control-label"></label>
+            <input asp-for="Nombre" class="form-control" value="@Model.Nombre" />
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+        <div class="form-group col-lg-3 mb-1 ml-1">
+            <label asp-for="Numero" class="control-label"></label>
+            <input asp-for="Numero" class="form-control" value="@Model.Numero" />
+            <span asp-validation-for="Numero" class="text-danger"></span>
+        </div>
+        <div class="form-group col-lg-3 mb-1 ml-1">
+            <label asp-for="Telefono" class="control-label"></label>
+            <input asp-for="Telefono" class="form-control" value="@Model.Telefono" />
+            <span asp-validation-for="Telefono" class="text-danger"></span>
+        </div>
+        <div class="form-group col-lg-3 mb-1 ml-1">
+            <label asp-for="Email" class="control-label"></label>
+            <input asp-for="Email" class="form-control" value="@Model.Email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group col-lg-3 mb-1 ml-1">
+            <label asp-for="Direccion" class="control-label"></label>
+            <input asp-for="Direccion" class="form-control" value="@Model.Direccion" />
+            <span asp-validation-for="Direccion" class="text-danger"></span>
+        </div>
+        <div class="form-group col-lg-3 mb-1 ml-1">
+            <label asp-for="Cuit" class="control-label"></label>
+            <input asp-for="Cuit" class="form-control" value="@Model.Cuit" />
+            <span asp-validation-for="Cuit" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-lg-3 mb-1 ml-1">
+            <input type="submit" value="Modificar" class="btn btn-success" />
+        </div>
     </form>
-    <button type="button" id="guardar" class="btn btn-success">Guardar</button>
-    <button type="button" id="eliminar_cliente" class="btn btn-danger">Eliminar</button>
+
+
+    <button type="button" id="eliminar" class="btn btn-danger">Eliminar</button>
     <button type="button" id="cancelar" class="btn btn-danger">Cancelar</button>
 </div>
