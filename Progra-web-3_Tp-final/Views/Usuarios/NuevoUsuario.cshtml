@@ -9,7 +9,6 @@
 
 <div class="text-center">
     <h3>Nuevo Usuario</h3>
-    @*<form class="usuarios-form">*@
     <form class="usuarios-form" action="../../Usuarios/CrearNuevo" method="post">
         <div class="form-group">
             <label asp-for="Email" class="control-label"></label>
@@ -46,10 +45,10 @@
             <input asp-for="FechaNacimiento" class="form-control">
             <span asp-validation-for="FechaNacimiento " class="text-danger"></span>
         </div>
-        <button type="submit"  value="Guardar" class="btn btn-success">Guardar</button>
-        <button type="submit" value="Cancelar"class="btn btn-danger">Cancelar</button>
-
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <button type="submit" class="btn btn-danger">Cancelar</button>
         <br />
         <div asp-validation-summary="All" class="text-danger"></div>
     </form>
- </div>
+    <button type="submit" class="btn btn-danger">Cancelar</button>
+</div>
