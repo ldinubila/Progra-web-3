@@ -78,7 +78,7 @@ $(document).ready(() => {
         const data = collectData();
 
         guardar(data, () => {
-            window.location.href = "/Pedidos";
+            window.location.href = "/Pedidos/Index";
         });
     });
 
@@ -123,7 +123,7 @@ $(document).ready(() => {
         })
     };
 });
-    function eliminar() {
+    function eliminar_pedidos() {
 
         valor = $('#boton_eliminar').val();
         Swal.fire({
@@ -144,7 +144,7 @@ $(document).ready(() => {
                         'success'
                     ).then((result) => {
 
-                        window.location = "/Pedidos"
+                        window.location = "/Pedidos/Index"
                     })
                 }
                 ,

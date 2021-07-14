@@ -125,7 +125,7 @@ $(document).ready(() => {
         const data = collectData();
 
         guardar(data, () => {
-            window.location.href = "/Pedidos";
+            window.location.href = "/Pedidos/Index";
         });
     });
 
@@ -186,7 +186,7 @@ function eliminar() {
                     'success'
                 ).then((result) => {
 
-                    window.location = "/Pedidos"
+                    window.location = "/Pedidos/Index"
                 })
             }
             ,
