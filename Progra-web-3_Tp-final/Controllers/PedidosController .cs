@@ -52,9 +52,6 @@ namespace Progra_web_3_Tp_final.Controllers
             ViewBag.TodosLosArticulos = _pedidosServicio.ObtenerTodosLosArticulos();
             
             return View(context.Clientes.ToList());
-            //return View(context.Pedidos.Include("IdClienteNavigation").Include("IdEstadoNavigation").ToList());
-            //ViewBag.TodosClientes = _pedidosServicio.ObtenerTodosClientes();
-            //return View();
         }
 
         public ActionResult EditarPedido(int id)
@@ -66,17 +63,10 @@ namespace Progra_web_3_Tp_final.Controllers
 
         [HttpPost]
         public ActionResult EditarPedido(Pedido pedido)
-        {
-            
+        { 
             _pedidosServicio.Modificar(pedido);
             return Redirect("/Pedidos/Index");
         }
-
-        //public ActionResult EditarPedido()
-        //{
-        //    return View();
-        //}
-
 
         public IActionResult Eliminar(int id)
         {
@@ -97,14 +87,11 @@ namespace Progra_web_3_Tp_final.Controllers
             return Redirect("/Pedidos");
         }
 
-        //public IActionResult AgregarPedido(PedidoArticulo pedart,int cant)
-        //{
-        //    if(pedart.IdArticuloNavigation.Descripcion)
-        //    {
-        //        pedart.Cantidad += cant;
-        //    }
-        //    return Redirect("/EditarPedido");
-        //}
+        public IActionResult AgregarPedido(int idCliente, int[] cantidad, int[] articulo, string textarea)
+        {
+
+            return Redirect("/Index");
+        }
 
         public ActionResult Alta(Pedido pedido)
         {
