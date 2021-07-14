@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
 
     // DataTable
-    var table = $('#example').DataTable({
+    var table = $('#tabla_pedidos').DataTable({
         "searching": false,
         "info": false,
         initComplete: function () {

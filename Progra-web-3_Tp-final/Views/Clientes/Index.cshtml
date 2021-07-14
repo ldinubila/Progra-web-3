@@ -31,10 +31,9 @@
                 @foreach (var cliente in Model)
                 {
                     <tr>
-                        <td>@cliente.Nombre</td>
+                        <td>@cliente.Nombre <span class="fecha-borrado">@cliente.FechaBorrado</span></td>
                         <td>@cliente.Numero</td>
                         <td>@cliente.Telefono</td>
-                        <td class="fecha-borrado">@cliente.FechaBorrado</td>
                         <td><a href="/Clientes/EditarCliente/@cliente.IdCliente">Ver</a></td>
                     </tr>
                 }
