@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace Progra_web_3_Tp_final.Models
+namespace Entidades.Models
 {
     public partial class EstadoPedido
     {

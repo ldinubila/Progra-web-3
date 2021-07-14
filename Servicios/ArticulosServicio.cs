@@ -1,7 +1,7 @@
-﻿using Progra_web_3_Tp_final.Models;
+﻿using Entidades.Models;
 using System;
 
-namespace Progra_web_3_Tp_final.Servicios
+namespace Servicios
 {
     public class ArticulosServicio : IArticulosServicio
     {

@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Progra_web_3_Tp_final.Models;
-using Progra_web_3_Tp_final.Servicios;
+using Entidades.Models;
+using Servicios;
 using System.Linq;
 
 
