@@ -82,11 +82,6 @@ $(document).ready(() => {
         });
     });
 
-    $("#guardar_y_limpiar").click(() => {
-        const data = collectData();
-        guardar(data, limpiarForm);
-    });
-
     const limpiarForm = () => {
         $(".pedidos-form :select, input").each(function () {
             $(this).val("");
@@ -153,9 +148,5 @@ $(document).ready(() => {
                 }
             });
         })
-};
-
-function validarEstado() {
-    console.log("Hola estado");
 };
 

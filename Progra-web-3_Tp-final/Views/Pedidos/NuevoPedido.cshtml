@@ -4,40 +4,39 @@
     List<Progra_web_3_Tp_final.Models.Articulo> articulos = ViewBag.TodosLosArticulos;
 }
 <link rel="stylesheet" href="~/css/nuevoPedido.css" />
-<script src="~/js/pedidos.js"></script>
+@*<script src="~/js/pedidos.js"></script>*@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
 
-<div class="text-center">
-    <div class="nuevoPedidos-filters">
-        <a href="../../Pedidos/Index">Volver</a>
-        <div class="selectCliente">
-            <select aria-label="Default select example">
-                <option selected>Cliente</option>
-                @foreach(Cliente cliente in Model)
-            {
-                <option value=@cliente.IdCliente>@cliente.Nombre</option>
-            }
-            </select>
+<form method="post" action="../../Pedidos/AgregarPedido">
+    <div class="text-center">
+        <div class="nuevoPedidos-filters">
+            <a href="../../Pedidos/Index">Volver</a>
+            <div class="selectCliente">
+                <select aria-label="Default select example" name="idCliente">
+                    <option selected>Cliente</option>
+                    @foreach (Cliente cliente in Model)
+                    {
+                        <option value=@cliente.IdCliente>@cliente.Nombre</option>
+                    }
+                </select>
+            </div>
+            <div class="selectDescripcion">
+                <select aria-label="Default select example" id="articuloSelect">
+                    <option selected>Descripcion o codigo</option>
+
+                    @foreach (Articulo art in articulos)
+                    {
+                        <option value=@art.IdArticulo>@art.Descripcion - @art.Codigo</option>
+                    }
+                </select>
+                <input type="number" min="1" value="1" id="cant" />
+                <button class="btn btn-success" id="agregar">Agregar</button>
+            </div>
         </div>
-        <div class="selectDescripcion">
-            <select aria-label="Default select example">
-                <option selected>Descripcion o codigo</option>
-                @foreach (Articulo art in articulos)
-                {
-                    <option value=@art.IdArticulo>@art.Descripcion - @art.Codigo</option>
-                }
-            </select>
-            <input type="text" placeholder="Cantidad" />
-            <form action="../../Pedidos/NuevoPedido" method="post">
-                <button type="submit" class="btn btn-success">Agregar</button>
-            </form>
-        </div>
+
     </div>
 
-</div>
-
-<form class="pedidos-form">
     <table id="example" class="display" style="width:100%">
         <thead>
             <tr>
@@ -47,20 +46,20 @@
                 <th>Ver</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="articulosPedidos" name="articulosPedidos" id="articulosPedidos">
         </tbody>
     </table>
     <div class="cajaComentarios">
         <label for="comentarios">Comentarios</label>
-        <textarea name="textarea" rows="10" cols="150">Escribe aquí</textarea>
+        <textarea name="textarea" rows="10" cols="150" placeholder="Escribe aquí"></textarea>
     </div>
-</form>
-<div class="botonesFinal">
-
     <button type="submit" class="btn btn-success" id="guardar">Guardar</button>
+</form>
+
+<div class="botonesFinal">
     <form action="../../Pedidos/Index" method="post">
         <button type="submit" class="btn btn-success">Volver</button>
     </form>
 </div>
 
-
+<script src="~/js/AgregarPedido.js"></script>

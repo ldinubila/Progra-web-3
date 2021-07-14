@@ -82,29 +82,26 @@ namespace Progra_web_3_Tp_final.Controllers
         {
             //_pedidosServicio.EliminarArticuloPedido(pedido);
             _pedidosServicio.Eliminar(id);
-            return Redirect("/Pedidos");
+            return Redirect("/Pedidos/Index");
         }
 
         public IActionResult PedidoCerrado(int id)
         {
             _pedidosServicio.CambiarEstadoACerrado(id);
-            return Redirect("/Pedidos");
+            return Redirect("/Pedidos/Index");
         }
 
         public IActionResult PedidoEntregado(int id)
         {
             _pedidosServicio.CambiarEstadoAEntregado(id);
-            return Redirect("/Pedidos");
+            return Redirect("/Pedidos/Index");
         }
 
-        //public IActionResult AgregarPedido(PedidoArticulo pedart,int cant)
-        //{
-        //    if(pedart.IdArticuloNavigation.Descripcion)
-        //    {
-        //        pedart.Cantidad += cant;
-        //    }
-        //    return Redirect("/EditarPedido");
-        //}
+        public IActionResult AgregarPedido(int idCliente, int[] cantidad, int[] articulo,string textarea)
+        {
+            
+            return Redirect("/Index");
+        }
 
         public ActionResult Alta(Pedido pedido)
         {

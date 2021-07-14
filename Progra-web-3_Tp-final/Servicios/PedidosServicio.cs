@@ -40,6 +40,7 @@ namespace Progra_web_3_Tp_final.Servicios
             _dbContext.SaveChanges();
         }
 
+        //Elimina todo el pedido de la vista EditarPedido
         public void Eliminar(int id)
         {
             Pedido pedidoNuevo = _dbContext.Pedidos.Find(id);
