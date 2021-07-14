@@ -111,7 +111,7 @@ namespace Progra_web_3_Tp_final.Controllers
 
             }
             _pedidosServicio.EditarPedido(IdPedido,pedidoArticulo,textarea);
-            return Redirect("/Index");
+            return Redirect("/Pedidos/Index");
         }
 
         public ActionResult Alta(Pedido pedido)
