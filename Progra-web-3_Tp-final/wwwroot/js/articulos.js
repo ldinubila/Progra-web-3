@@ -137,11 +137,11 @@ $(document).ready(() => {
         })
     };
 
-    $("#cancelar").click(() => {
+    $("#cancelar_articulo").click(() => {
         window.location.href = "/Articulos/Index";
     });
 
-    $("#editar").click(() => {
+    $("#editar_articulo").click(() => {
         const data = collectData2();
 
         editar(data, () => {
