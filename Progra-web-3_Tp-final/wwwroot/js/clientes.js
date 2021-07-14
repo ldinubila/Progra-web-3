@@ -9,7 +9,7 @@
         const data = collectData();
 
         guardar(data, () => {
-            window.location.href = "/Clientes";
+            window.location.href = "/Clientes/Index";
         });
     });
 
@@ -34,7 +34,7 @@
                             title: `El cliente: ${data.Nombre} fue eliminado`,
                             showConfirmButton: false,
                             timer: 1500
-                        }).then(response => (window.location.href = "/Clientes"));
+                        }).then(response => (window.location.href = "/Clientes/Index"));
                     },
                     error: error => {
                         console.log(error);
@@ -72,7 +72,7 @@
     }
 
     $("#cancelar").click(() => {
-        window.location.href = "/Clientes";
+        window.location.href = "/Clientes/Index";
     });
 
     async function guardar(data, callback) {
