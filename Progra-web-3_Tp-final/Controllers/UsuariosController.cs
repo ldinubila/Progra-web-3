@@ -56,7 +56,8 @@ namespace Progra_web_3_Tp_final.Controllers
         {
             if (ModelState.IsValid)
             {
-                _usuariosServicio.Alta(usuario);
+               
+                _usuariosServicio.Alta(usuario, (int)HttpContext.Session.GetInt32("Usuario"));
                 return RedirectToAction("Index");
             }
             return Redirect("/Usuarios/Index");
@@ -71,13 +72,13 @@ namespace Progra_web_3_Tp_final.Controllers
         public ActionResult EditarUsuario(Usuario user)
         {
          
-              _usuariosServicio.ModificarUsuario(user);
+              _usuariosServicio.ModificarUsuario(user, (int)HttpContext.Session.GetInt32("Usuario"));
               return Redirect("/Usuarios/Index");
           }
         public ActionResult Eliminar(int id)
         {
             Usuario user = _usuariosServicio.ObtenerPorId(id);
-            _usuariosServicio.Eliminar(user);
+            _usuariosServicio.Eliminar(user, (int)HttpContext.Session.GetInt32("Usuario"));
             return Redirect("/Usuarios/Index");
         }
 

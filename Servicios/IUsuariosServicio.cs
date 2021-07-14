@@ -10,8 +10,8 @@ namespace Servicios
     public interface IUsuariosServicio
     {
         Usuario ObtenerPorId(int id);
-        void Alta(Usuario user);
-        void ModificarUsuario(Usuario user);
-        void Eliminar(Usuario user);
+        void Alta(Usuario user,int usuario);
+        void ModificarUsuario(Usuario user, int usuario);
+        void Eliminar(Usuario user, int usuario);
     }           
 }
