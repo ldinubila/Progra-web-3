@@ -18,7 +18,6 @@ namespace Progra_web_3_Tp_final.Controllers
         private readonly TokenServicio _tokenServicio;
         private readonly IConfiguration _configuration;
         private readonly NavegarServicio _navegarServicio;
-
         public UsuariosController(IConfiguration config)
         {
             context = new _20211CTPContext();
@@ -26,7 +25,6 @@ namespace Progra_web_3_Tp_final.Controllers
             _tokenServicio = new TokenServicio();
             _configuration = config;
             _navegarServicio = new NavegarServicio();
-          
         }
 
         [AllowAnonymous]
@@ -58,11 +56,8 @@ namespace Progra_web_3_Tp_final.Controllers
         {
             if (ModelState.IsValid)
             {
-            
-                _usuariosServicio.CrearNuevo(usuario);
-
+                _usuariosServicio.Alta(usuario);
                 return RedirectToAction("Index");
-
             }
             return Redirect("/Usuarios/Index");
         }
@@ -71,10 +66,11 @@ namespace Progra_web_3_Tp_final.Controllers
             Usuario user = _usuariosServicio.ObtenerPorId(id);
             return View(user); 
         }
-       
+
         [HttpPost]
         public ActionResult EditarUsuario(Usuario user)
-          {
+        {
+         
               _usuariosServicio.ModificarUsuario(user);
               return Redirect("/Usuarios/Index");
           }

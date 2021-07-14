@@ -28,7 +28,8 @@ namespace Servicios
 
 
         //public string Ingresar(string mail, string pass)
-        public bool Ingresar(string mail, string pass, out Usuario usuarioEncontrado)
+        //public bool Ingresar(string Email, string Password, out Usuario usuarioEncontrado)
+        public bool Ingresar(string Email, string Password, out Usuario usuarioEncontrado)
         {
 
             //Origen de datos
@@ -36,7 +37,7 @@ namespace Servicios
 
             //Preparación de 
             //var user = _dBcontext.Usuarios.Include(o => o.Email).Include(o => o.Password).FirstOrDefault();
-            usuarioEncontrado = _dBcontext.Usuarios.FirstOrDefault(o => o.Email == mail && o.Password == pass);
+            usuarioEncontrado = _dBcontext.Usuarios.FirstOrDefault(o => o.Email == Email && o.Password == Password);
 
             //Ejecución
             //Console.WriteLine("Login:" + login.Count());
@@ -49,15 +50,6 @@ namespace Servicios
             }
             return false;
         }
-
-        public void LogOut(string UsSession)
-        {
-
-
-        }
-
-
-
-
+         
     }
 }

@@ -1,17 +1,25 @@
-﻿@model List<Entidades.Models.Usuario>
+﻿@model Entidades.Models.Usuario
 @{
     ViewData["Title"] = "Home Page";
+    var error = TempData["Error"] as string;
+}
+
+<partial name="/Views/Shared/_ValidationScriptsPartial.cshtml" />
+<h3>Bienvenido!</h3>
+@if (!string.IsNullOrEmpty(error))
+{
+    <h3 class="alert-info">@error</h3>
 }
 
 <form action="Home/Ingresar" method="post">
-
-
     <div class="text-left mb-4">
-        <h2>Bienvenido!</h2>
-        Usuario:
-        <input type="text" class="form-control col-4 md-2" name="mail" value="" placeholder="Ingrese Email" />
-        Contraseña:
-        <input type="password" class="form-control col-4 md-2 " name="pass" value="" placeholder="Ingrese contraseña" />
+        <input type="text" asp-for="Email" class="form-control col-4" placeholder="Ingresar email">
+        <small><span asp-validation-for="Email" class="text-danger"></span></small>
+    </div>
+    <div class="text-left mb-4">
+        <input type="password" asp-for="Password" class="form-control col-4" placeholder="Ingresar Contraseña">
+        <small><span asp-validation-for="Password" class="text-danger"></span></small>
     </div>
     <input type="submit" class="btn btn-success md-2 " name="Ingresar" value="Ingresar" />
 </form>
+ 

@@ -26,9 +26,13 @@ namespace Progra_web_3_Tp_final.Controllers
             _loginServicio = new LoginServicio(dbContext);
             _tokenServicio = new TokenServicio();
         }
-
         public IActionResult Index()
         {
+            return View();
+        }
+        public IActionResult Privacy()
+        {
+            System.Diagnostics.Debug.WriteLine("Prueba");
             return View();
         }
 
@@ -37,11 +41,7 @@ namespace Progra_web_3_Tp_final.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        public IActionResult Privacy()
-        {
-            System.Diagnostics.Debug.WriteLine("Prueba");
-            return View();
-        }
+       
 
         public IActionResult Ingresar()
         {
@@ -50,39 +50,34 @@ namespace Progra_web_3_Tp_final.Controllers
         }
 
         [HttpPost]
-        public IActionResult Ingresar(string mail, string pass)
+        public IActionResult Ingresar(Usuario user)
         {
-            _loginServicio.Ingresar(mail, pass, out Usuario usuarioSalida);
+            _loginServicio.Ingresar(user.Email,user.Password, out Usuario usuarioSalida);
             if (usuarioSalida != null)
             {
+
                 string tokengenerado = _tokenServicio.generarToken(usuarioSalida, _configuration);
                 HttpContext.Session.SetString("Token", tokengenerado);
                 var VistaAnteriorSinLogin = HttpContext.Session.GetString("VistaAnteriorSinLogin");
                 HttpContext.Session.SetString("EsAdmin", usuarioSalida.EsAdmin ? "Admin" : "Usuario");
-
-                if (VistaAnteriorSinLogin == null)
-                    return Redirect("/Pedidos/Index");
-                else
-                    return Redirect(VistaAnteriorSinLogin);
+             
+                    if (VistaAnteriorSinLogin == null)
+                        return Redirect("/Pedidos/Index");
+                    else
+                        return Redirect(VistaAnteriorSinLogin);
             }
             else
             {
-                TempData["Error"] = "Error. Email o contraseña inválidas";
-
+                TempData["Error"] = "Usuario o contraseña inválidas";
                 return Redirect("/Home");
             }
 
         }
-
-
         public IActionResult Salir()
         {
             HttpContext.Session.Clear();
             return Redirect("/");
         }
-
-
     }
-
 
 }

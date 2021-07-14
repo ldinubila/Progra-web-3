@@ -27,13 +27,19 @@ namespace Entidades.Models
         public int IdUsuario { get; set; }
         public bool EsAdmin { get; set; }
         
-        [Required]
+        [Required(ErrorMessage = "Email requerido.")]
+        [EmailAddress]
         public string Email { get; set; }
-        [Required]
+        
+        [Required(ErrorMessage = "Contraseña requerida.")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
-        [Required]
+        
+        [Required(ErrorMessage = "Nombre es requerido.")]
         [StringLength(50)]
         public string Nombre { get; set; }
+        
+        [StringLength(50)]
         public string Apellido { get; set; }
         public DateTime? FechaNacimiento { get; set; }
         public DateTime? FechaUltLogin { get; set; }
@@ -43,7 +49,6 @@ namespace Entidades.Models
         public int? ModificadoPor { get; set; }
         public int? CreadoPor { get; set; }
         public int? BorradoPor { get; set; }
-
         public virtual Usuario BorradoPorNavigation { get; set; }
         public virtual Usuario CreadoPorNavigation { get; set; }
         public virtual Usuario ModificadoPorNavigation { get; set; }
