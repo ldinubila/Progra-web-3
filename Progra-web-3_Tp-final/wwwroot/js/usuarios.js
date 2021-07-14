@@ -186,15 +186,17 @@ $(document).ready(() => {
     $("#eliminar_usuario").click(() => {
         const data = collectData3();
 
+        console.log('-----', data);
+
         Swal.fire({
             title: `Eliminar usuario?`,
-            text: `Esta seguro que desea eliminar el usuario: ${data.nombre}`,
+            text: `Esta seguro que desea eliminar el usuario: ${data.Nombre}`,
             icon: 'question',
             showCancelButton: true,
         }).then(result => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: `/usuarios/Eliminar/${data.id}`,
+                    url: `/Usuarios/Eliminar/${data.IdUsuario}`,
                     success: response => {
                         Swal.fire({
                             position: 'top-end',
@@ -218,7 +220,7 @@ $(document).ready(() => {
         $(".usuarios-form :input").each(function () {
             data[this.id] = $(this).val();
         });
-
+        
         return data;
     };
 

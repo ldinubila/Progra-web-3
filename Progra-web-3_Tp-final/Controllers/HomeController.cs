@@ -60,6 +60,7 @@ namespace Progra_web_3_Tp_final.Controllers
                 HttpContext.Session.SetString("Token", tokengenerado);
                 var VistaAnteriorSinLogin = HttpContext.Session.GetString("VistaAnteriorSinLogin");
                 HttpContext.Session.SetString("EsAdmin", usuarioSalida.EsAdmin ? "Admin" : "Usuario");
+                HttpContext.Session.SetInt32("Usuario",usuarioSalida.IdUsuario);
              
                     if (VistaAnteriorSinLogin == null)
                         return Redirect("/Pedidos/Index");

@@ -1,4 +1,4 @@
-﻿@model Entidades.Models.Usuario
+﻿
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -7,10 +7,11 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
 @*<partial name="/Views/Shared/_ValidationScriptsPartial.cshtml" />*@
 
+@model Usuario
 <div class="text-center">
     <h3>Editar Usuario</h3>
     <form class="usuarios-form" asp-action="EditarUsuario" asp-controller="Usuarios" method="post">
-        <input type="hidden" name="IdUsuario" value="@Model.IdUsuario">
+        <input type="hidden" id="IdUsuario" name="IdUsuario" value="@Model.IdUsuario">
         <div class="form-group col-lg-3 mb-1 ml-1">
             <label asp-for="Email" class="control-label"></label>
             <input asp-for="Email" class="form-control" value="@Model.Email">
@@ -47,6 +48,6 @@
         </div>
     </form>
 
-        <button type="button" id="cancelar_usuario" class="btn btn-danger">Cancelar</button>
-        <button type="button" id="eliminar_usuario" class="btn btn-danger">Eliminar</button>
+    <button type="button" id="cancelar_usuario" class="btn btn-danger">Cancelar</button>
+    <button type="button" id="eliminar_usuario" class="btn btn-danger">Eliminar</button>
 </div>
