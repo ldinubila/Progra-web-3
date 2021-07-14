@@ -13,7 +13,7 @@
         <div class="nuevoPedidos-filters">
             <a href="../../Pedidos/Index">Volver</a>
             <div class="selectCliente">
-                <select aria-label="Default select example">
+                <select aria-label="Default select example" name="idCliente">
                     <option selected>Cliente</option>
                     @foreach (Cliente cliente in Model)
                     {
@@ -22,8 +22,9 @@
                 </select>
             </div>
             <div class="selectDescripcion">
-                <select aria-label="Default select example">
+                <select aria-label="Default select example" id="articuloSelect">
                     <option selected>Descripcion o codigo</option>
+
                     @foreach (Articulo art in articulos)
                     {
                         <option value=@art.IdArticulo>@art.Descripcion - @art.Codigo</option>
@@ -46,7 +47,6 @@
             </tr>
         </thead>
         <tbody class="articulosPedidos" name="articulosPedidos" id="articulosPedidos">
-            >
         </tbody>
     </table>
     <div class="cajaComentarios">
@@ -55,12 +55,11 @@
     </div>
     <button type="submit" class="btn btn-success" id="guardar">Guardar</button>
 </form>
+
 <div class="botonesFinal">
     <form action="../../Pedidos/Index" method="post">
         <button type="submit" class="btn btn-success">Volver</button>
     </form>
 </div>
 
-<script src="~/js/agregarPedido.js"></script>
-
-
+<script src="~/js/AgregarPedido.js"></script>

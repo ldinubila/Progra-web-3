@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Entidades.Models;
 using Servicios;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Progra_web_3_Tp_final.Controllers
 {
@@ -87,9 +88,29 @@ namespace Progra_web_3_Tp_final.Controllers
             return Redirect("/Pedidos");
         }
 
-        public IActionResult AgregarPedido(int idCliente, int[] cantidad, int[] articulo, string textarea)
+        public IActionResult AgregarPedido(int idCliente,int[] cantidad,int[] articulo,string textarea)
         {
+            List<PedidoArticulo> pedidoArticulo = new List<PedidoArticulo>();
+            for(int i = 0; i < articulo.Length; i++)
+            {
+                pedidoArticulo.Add(_pedidosServicio.CrearPedidoArticulo(cantidad[i],articulo[i]));
 
+            }
+            _pedidosServicio.CrearPedido(pedidoArticulo,idCliente,textarea);
+            return Redirect("/Index");
+        }
+
+        public IActionResult ActualizarPedido(int IdPedido, int[] cantidad, int[] articulo, string textarea)
+        {
+            Pedido pedido =_pedidosServicio.ObtenerPorId(IdPedido);
+            _pedidosServicio.EliminarArticuloPedido(pedido);
+            List<PedidoArticulo> pedidoArticulo = new List<PedidoArticulo>();
+            for (int i = 0; i < articulo.Length; i++)
+            {
+                pedidoArticulo.Add(_pedidosServicio.CrearPedidoArticulo(cantidad[i], articulo[i]));
+
+            }
+            _pedidosServicio.EditarPedido(IdPedido,pedidoArticulo,textarea);
             return Redirect("/Index");
         }
 
