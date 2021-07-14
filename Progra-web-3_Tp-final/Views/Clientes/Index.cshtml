@@ -13,7 +13,7 @@
             <label class="form-check-label col-lg-9" for="excluir_eliminados">Excluir eliminados</label>
             <input type="checkbox" class="form-check-input" id="excluir_eliminados" onclick="filtro_eliminados()">
         </div>
-        <button type="button" class="btn btn-info" onclick="location.href='/Clientes/NuevoCliente'">
+        <button type="button" class="btn btn-success" onclick="location.href='/Clientes/NuevoCliente'">
             Nuevo Cliente
         </button>
     </div>
@@ -34,7 +34,11 @@
                         <td>@cliente.Nombre <span class="fecha-borrado">@cliente.FechaBorrado</span></td>
                         <td>@cliente.Numero</td>
                         <td>@cliente.Telefono</td>
-                        <td><a href="/Clientes/EditarCliente/@cliente.IdCliente">Ver</a></td>
+                        <td>
+                            <form action="../../Clientes/EditarCliente/@cliente.IdCliente">
+                                <button class="btn btn-info">Ver</button>
+                            </form>
+                        </td>
                     </tr>
                 }
             </tbody>
