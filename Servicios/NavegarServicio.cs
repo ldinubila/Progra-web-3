@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Progra_web_3_Tp_final.Servicios
+namespace Servicios
 {
     public class NavegarServicio : INavegarServicio
     {

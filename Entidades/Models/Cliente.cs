@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 #nullable disable
 
-namespace Progra_web_3_Tp_final.Models
+namespace Entidades.Models
 {
     public partial class Cliente
     {

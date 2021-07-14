@@ -1,4 +1,4 @@
-﻿using Progra_web_3_Tp_final.Models;
+﻿using Entidades.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Http;
 
 
 
-namespace Progra_web_3_Tp_final.Servicios
+namespace Servicios
 {
     public class LoginServicio : ILoginServicio
     {

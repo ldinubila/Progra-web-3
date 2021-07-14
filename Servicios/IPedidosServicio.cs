@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Progra_web_3_Tp_final.Models;
+using Entidades.Models;
 
-namespace Progra_web_3_Tp_final.Servicios
+namespace Servicios
 {
-    interface IPedidosServicio
+    public interface IPedidosServicio
     {
         Pedido ObtenerPorId(int id);
         void Alta(Pedido pedido);

@@ -1,6 +1,6 @@
 using System;
 
-namespace Progra_web_3_Tp_final.Models
+namespace Entidades.Models
 {
     public class ErrorViewModel
     {
