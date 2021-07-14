@@ -65,8 +65,7 @@ namespace Progra_web_3_Tp_final.Controllers
             {
                 _clienteServicio.Alta(data);
 
-                return Redirect("/Clientes");
-
+                return Redirect("/Clientes/Index");
             }
 
             return View("NuevoCliente", data);
@@ -79,8 +78,7 @@ namespace Progra_web_3_Tp_final.Controllers
             {
                 _clienteServicio.Modificar(data);
 
-                return Redirect("/Clientes");
-
+                return Redirect("/Clientes/Index");
             }
 
             return View("EditarCliente", data);
