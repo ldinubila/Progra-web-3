@@ -21,5 +21,11 @@ namespace Servicios
         void CambiarEstadoAEntregado(int id);
 
         List<Articulo> ObtenerTodosLosArticulos();
+
+        PedidoArticulo CrearPedidoArticulo(int cantidad,int articulo);
+
+        Pedido CrearPedido(List<PedidoArticulo> pedidoArticulo,int idCliente,string textarea);
+
+        Pedido EditarPedido(int IdPedido,List<PedidoArticulo> pedidoArticulo, string textarea);
     }
 }

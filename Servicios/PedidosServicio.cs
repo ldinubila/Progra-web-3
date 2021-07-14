@@ -78,5 +78,36 @@ namespace Servicios
         {
             return _dbContext.Articulos.ToList();
         }
+
+        public PedidoArticulo CrearPedidoArticulo(int cantidad, int articulo)
+        {
+            PedidoArticulo pedart = new PedidoArticulo();
+            pedart.IdArticulo = articulo;
+            pedart.Cantidad = cantidad;
+            return pedart;
+        }
+
+        public Pedido CrearPedido(List<PedidoArticulo> pedidoArticulo,int idCliente,string textarea)
+        {
+            Pedido pedido = new Pedido();
+            pedido.IdCliente = idCliente;
+            pedido.Comentarios = textarea;
+            pedido.IdEstado = 1;
+            pedido.PedidoArticulos = pedidoArticulo;
+            _dbContext.Pedidos.Add(pedido);
+            _dbContext.SaveChanges();
+            return pedido;
+        }
+
+        public Pedido EditarPedido(int IdPedido,List<PedidoArticulo> pedidoArticulo,string textarea)
+        {
+            Pedido pedido = _dbContext.Pedidos.Find(IdPedido);
+            pedido.Comentarios = textarea;
+            pedido.IdEstado = 1;
+            pedido.PedidoArticulos = pedidoArticulo;
+            _dbContext.Pedidos.Attach(pedido);
+            _dbContext.SaveChanges();
+            return pedido;
+        }
     }
 }
