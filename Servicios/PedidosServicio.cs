@@ -39,7 +39,7 @@ namespace Servicios
             pedidoNuevo.IdCliente = pedido.IdCliente;
             _dbContext.SaveChanges();
         }
-
+        //Elimina todo el pedido de la vista EditarPedido
         public void Eliminar(int id)
         {
             Pedido pedidoNuevo = _dbContext.Pedidos.Find(id);
