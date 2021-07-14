@@ -10,8 +10,8 @@ namespace Servicios
     public interface IArticulosServicio
     {
         Articulo ObtenerPorId(int id);
-        void Alta(Articulo art);
-        void Modificar(Articulo art);
-        void Eliminar(Articulo art);
+        void Alta(Articulo art, int usuario);
+        void Modificar(Articulo art, int usuario);
+        void Eliminar(Articulo art, int usuario);
     }
 }

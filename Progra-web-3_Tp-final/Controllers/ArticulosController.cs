@@ -59,7 +59,7 @@ namespace Progra_web_3_Tp_final.Controllers
         {
             if (ModelState.IsValid)
             {
-                _articulosServicio.Alta(art);
+                _articulosServicio.Alta(art, (int)HttpContext.Session.GetInt32("Usuario"));
                 return Redirect("/Articulos/Index");
             }
             return View(art);
@@ -74,14 +74,14 @@ namespace Progra_web_3_Tp_final.Controllers
         [HttpPost]
        public ActionResult EditarArticulo(Articulo art)
         {
-            _articulosServicio.Modificar(art);
+            _articulosServicio.Modificar(art, (int)HttpContext.Session.GetInt32("Usuario"));
             return Redirect("/Articulos/Index");
         }
 
         public ActionResult Eliminar(int id)
         {
             Articulo art = _articulosServicio.ObtenerPorId(id);
-            _articulosServicio.Eliminar(art);
+            _articulosServicio.Eliminar(art, (int)HttpContext.Session.GetInt32("Usuario"));
             return Redirect("/Articulos");
         }
 

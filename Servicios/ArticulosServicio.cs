@@ -17,23 +17,26 @@ namespace Servicios
             return _dbContext.Articulos.Find(id);
         }
 
-        public void Alta(Articulo art)
+        public void Alta(Articulo art, int usuario)
         {
+            art.CreadoPor = usuario;
             _dbContext.Articulos.Add(art);
             _dbContext.SaveChanges();
         }
 
-        public void Modificar(Articulo art)
+        public void Modificar(Articulo art, int usuario)
         {
             Articulo artNuevo = ObtenerPorId(art.IdArticulo);
             artNuevo.Codigo = art.Codigo;
             artNuevo.Descripcion = art.Descripcion;
             artNuevo.FechaModificacion = DateTime.Now;
+            artNuevo.ModificadoPor = usuario;
             _dbContext.SaveChanges();
         }
 
-        public void Eliminar(Articulo art)
+        public void Eliminar(Articulo art, int usuario)
         {
+            art.BorradoPor = usuario;
             _dbContext.Articulos.Remove(art);
             _dbContext.SaveChanges();
         }
