@@ -9,14 +9,14 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="~/bundles/site.min.js"></script>
-    <link rel="stylesheet" href="~/bundles/site.min.css" />
+    <script src="~/bundles/site.min.js" asp-append-version="true"></script>
+    <link rel="stylesheet" href="~/bundles/site.min.css" asp-append-version="true" />
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">PW3 - Tp Final</a>
+                <a class="navbar-brand font-weight-bold" asp-area="" asp-controller="Home" asp-action="Index">PW3 - TP Final</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -27,28 +27,28 @@
                         @if (User.Identity.IsAuthenticated)
                         {
 
-                            <li class="nav-item">
+                            <li class="nav-item ml-2 font-weight-bold">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Pedidos" asp-action="Index">Pedidos</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item ml-2 font-weight-bold">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Articulos" asp-action="Index">Articulos</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item ml-2 font-weight-bold">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Clientes" asp-action="Index">Clientes</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item ml-2 font-weight-bold">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Index">Usuarios</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark">  Hola @User.Identity.Name</a>
+                            <li class="nav-item ml-2 font-weight-bold">
+                                <a class="nav-link text-dark">  Bienvenido @User.Identity.Name</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item ml-2 font-weight-bold">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Salir">Salir</a>
                             </li>
                         }
                         else
                         {
-                            <li class="nav-item">
+                            <li class="nav-item font-weight-bold">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Ingresar">Ingresar</a>
                             </li>
                         }

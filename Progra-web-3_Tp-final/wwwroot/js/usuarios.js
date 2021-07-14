@@ -171,7 +171,7 @@ function filtro_email() {
     }
 };
 
-function filtro_eliminados() {
+function filtro_usuarios_eliminados() {
     // Declare variables
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("excluir_eliminados");

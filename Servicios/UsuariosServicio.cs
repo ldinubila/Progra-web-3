@@ -1,8 +1,10 @@
-﻿using Progra_web_3_Tp_final.Models;
+﻿using Entidades.Models;
 using System;
+using Servicios;
+using System.Security.Claims;
 using System.Linq;
 
-namespace Progra_web_3_Tp_final.Servicios
+namespace Servicios
 {
     public class UsuariosServicio : IUsuariosServicio
     {

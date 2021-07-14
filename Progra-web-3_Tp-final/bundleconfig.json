@@ -15,11 +15,11 @@
   {
     "outputFileName": "wwwroot/bundles/site.min.js",
     "inputFiles": [
-      "wwwroot/js/clientes.js",
       "wwwroot/js/usuarios.js",
       "wwwroot/js/articulos.js",
-      "wwwroot/js/editarPedidos.js",
-      "wwwroot/js/nuevoPedido.js"
+
+      "wwwroot/js/pedidos.js",
+      "wwwroot/js/clientes.js"
     ],
     "minify": {
       "enabled": true,

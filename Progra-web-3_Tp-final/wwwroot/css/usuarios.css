@@ -17,3 +17,46 @@ button a {
 .fecha-borrado {
     display: none;
 }
+<<<<<<< HEAD
+=======
+
+nuevoUsuario-filters button {
+    height: 50px;
+    border-radius: 10px;
+    width: 150px;
+}
+
+#example {
+    margin-top: 250px;
+}
+
+#example_wrapper {
+    margin-top: 100px;
+}
+
+.cajaComentarios {
+    width: 1500px;
+    height: 302px;
+}
+
+    .cajaComentarios label {
+        position: absolute;
+    }
+
+    .cajaComentarios textarea {
+        margin-top: 30px;
+        margin-right: 1500px;
+    }
+
+.botonesFinal {
+    display: flex;
+}
+
+    .botonesFinal button {
+        margin: 10px;
+    }
+
+.fecha-borrado {
+    display: none;
+}
+>>>>>>> 788afa5f1c0782b59ef3842321ff6c315af92d19

@@ -1,4 +1,4 @@
-﻿@model List<Progra_web_3_Tp_final.Models.Articulo>
+﻿@model List<Entidades.Models.Articulo>
 @{
     ViewData["Title"] = "Articulos";
 }
@@ -12,7 +12,7 @@
         <input type="text" class="form-control col-lg-3" id="buscar_codigo" onkeyup="filtro_codigo()" placeholder="Código">
         <div class="form-group form-check col-lg-3">
             <label class="form-check-label col-lg-9" for="excluir_eliminados">Excluir eliminados</label>
-            <input type="checkbox" class="form-check-input" id="excluir_eliminados" onclick="filtro_eliminados()">
+            <input type="checkbox" class="form-check-input" id="excluir_eliminados" onclick="filtro_articulos_eliminados()">
         </div>
         <form action="../../Articulos/NuevoArticulo" method="get">
             <button type="submit" class="btn btn-success">Nuevo Artículo</button>
@@ -32,13 +32,12 @@
                 {
                     <tr>
                         <td>@art.Descripcion</td>
-                        <td>@art.Codigo</td>
+                        <td>@art.Codigo <span class="fecha-borrado">@art.FechaBorrado</span></td>
                         <td>
                             <form action="../../Articulos/EditarArticulo/@art.IdArticulo">
                                 <button class="btn btn-info">Ver</button>
                             </form>
                         </td>
-                        <td class="fecha-borrado">@art.FechaBorrado</td>
                     </tr>
                 }
             </tbody>

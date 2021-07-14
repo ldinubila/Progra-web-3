@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using Progra_web_3_Tp_final.Models;
-using Progra_web_3_Tp_final.Servicios;
+using Entidades.Models;
+using Servicios;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;

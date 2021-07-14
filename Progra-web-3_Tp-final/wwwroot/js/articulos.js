@@ -21,6 +21,7 @@
         }
     });
 
+
 });
 
 function filtro_articulo() {
@@ -68,7 +69,7 @@ function filtro_codigo() {
     }
 };
 
-function filtro_eliminados() {
+function filtro_articulos_eliminados() {
     // Declare variables
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("excluir_eliminados");
@@ -136,11 +137,11 @@ $(document).ready(() => {
         })
     };
 
-    $("#cancelar").click(() => {
+    $("#cancelar_articulo").click(() => {
         window.location.href = "/Articulos/Index";
     });
 
-    $("#editar").click(() => {
+    $("#editar_articulo").click(() => {
         const data = collectData2();
 
         editar(data, () => {
