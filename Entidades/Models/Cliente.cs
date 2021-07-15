@@ -20,8 +20,14 @@ namespace Entidades.Models
 
         [Required(ErrorMessage = "El Nombre es requerido")]
         public string Nombre { get; set; }
-        public string Telefono { get; set; }
+
+        [Required(ErrorMessage = "El Nombre es requerido")]
+        [EmailAddress]
         public string Email { get; set; }
+
+        [Range(0, int.MaxValue, ErrorMessage = "El numero debe contener solo numeros")]
+        public string Telefono { get; set; }
+
         public string Direccion { get; set; }
         public string Cuit { get; set; }
         public DateTime FechaCreacion { get; set; }
