@@ -18,7 +18,8 @@ namespace Servicios
 
         public Pedido ObtenerPorId(int id)
         {
-            return _dbContext.Pedidos.Include("PedidoArticulos").Include("PedidoArticulos.IdArticuloNavigation").Include("IdEstadoNavigation").Include("IdClienteNavigation").Where(a => a.IdPedido == id).FirstOrDefault();
+            return _dbContext.Pedidos.Include("PedidoArticulos").Include("PedidoArticulos.IdArticuloNavigation")
+                .Include("IdEstadoNavigation").Include("IdClienteNavigation").Where(a => a.IdPedido == id).FirstOrDefault();
         }
 
         public Cliente ObtenerClientePorId(int id)

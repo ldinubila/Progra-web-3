@@ -82,7 +82,7 @@ namespace Progra_web_3_Tp_final.Controllers
         {
             Articulo art = _articulosServicio.ObtenerPorId(id);
             _articulosServicio.Eliminar(art, (int)HttpContext.Session.GetInt32("Usuario"));
-            return Redirect("/Articulos");
+            return Redirect("/Articulos/Index");
         }
 
 
