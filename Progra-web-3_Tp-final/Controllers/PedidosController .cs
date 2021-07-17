@@ -51,8 +51,9 @@ namespace Progra_web_3_Tp_final.Controllers
         public IActionResult NuevoPedido()
         {
             ViewBag.TodosLosArticulos = _pedidosServicio.ObtenerTodosLosArticulos();
+            List<Cliente> clientes = context.Clientes.Include(c => c.Pedidos.Where(p => p.IdEstado != 1)).ToList();
             
-            return View(context.Clientes.ToList());
+            return View(clientes);
         }
 
         public ActionResult EditarPedido(int id)

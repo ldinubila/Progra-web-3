@@ -23,14 +23,14 @@
                         <option value=@art.IdArticulo>@art.Descripcion - @art.Codigo</option>
                     }
                 </select>
-                <input type="number" min="1" value="1" id="cant" />
+                <input type="number" value="1" id="cant" />
                 <button class="btn btn-success" id="agregar">Agregar</button>
             </div>
         </div>
     </div>
     <form method="post" action="../../Pedidos/ActualizarPedido">
         <input type="hidden" value="@Model.IdPedido" name="IdPedido"/>
-        <table id="example" class="display text-center" style="width:100%">
+        <table id="tabla_pedidos" class="display text-center" style="width:100%">
             <thead>
                 <tr>
                     <th>Descripcion</th>
@@ -149,4 +149,4 @@
         </div>
         }
 
-        <script src="~/js/AgregarPedido.js"></script>
+        <script src="~/js/agregarPedido.js"></script>
