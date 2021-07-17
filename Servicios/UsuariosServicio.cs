@@ -46,7 +46,7 @@ namespace Servicios
                 userNuevo.Nombre = user.Nombre;
                 userNuevo.Apellido = user.Apellido;
                 userNuevo.FechaNacimiento = user.FechaNacimiento;
-                userNuevo.FechaModificacion = DateTime.Now;
+                userNuevo.FechaModificacion = DateTime.Today;
                 userNuevo.ModificadoPor = usuario;
                 
                 _dbContext.SaveChanges();
