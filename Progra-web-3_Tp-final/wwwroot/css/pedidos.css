@@ -27,7 +27,7 @@
     }
 
 /*Nuevo pedido*/
-.nuevoPedidos-filters {
+/*.nuevoPedidos-filters {
     display: flex;
     justify-content: space-between;
 }
@@ -85,4 +85,4 @@ nuevoPedidos-filters button {
 
 .botonesFinal button{
     margin: 10px;
-}
+}*/

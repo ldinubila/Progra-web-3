@@ -11,19 +11,16 @@ function agregarArticulo() {
     let cantidades = document.getElementsByClassName('cantidad');
     let articulosAgregados = document.getElementsByClassName("articulosAgregados")
 
-
     let agregados = document.getElementsByClassName("agregados");
-    //let textArticulo = "<tr class='articulosAgregados'><td> <input type='text' class='agregados' name='articulo' value='" + articuloSelect.value + "'/><input type='text' class='cantidad' name='cantidad' value='" + cantidad + "'/> - " + articuloSelect.options[articuloSelect.selectedIndex].text + " </td> <td></td><td>" + cantidad + "</td><td><button class='quitar' name='quitar'>Quitar</button></td></tr>";
-    //let innerText = "<td> <input type='text' name='articulo' class='agregados' value='" + articuloSelect.value + "'/><input type='text' class='cantidad' name='cantidad' value='" + cantidad + "'/> - " + articuloSelect.options[articuloSelect.selectedIndex].text + " </td> <td></td><td>" + cantidad + "</td><td><button class='quitar' name='quitar'>Quitar</button></td>";
     let validar = false;
     for (let i = 0; i < agregados.length; i++) {
         if (articuloSelect.value == agregados[i].value) {
             validar = true;
             cantidad = parseInt(cantidades[i].value) + parseInt(cantidad)
-            //console.log(articulosAgregados[i].innerHTML)
-            //console.log(textArticulo)
-            articulosAgregados[i].innerHTML = "<td> <input type='hidden' name='articulo' class='agregados' value='" + articuloSelect.value + "'/><input type='hidden' class='cantidad' name='cantidad' value='" + cantidad + "'/> - " + articuloSelect.options[articuloSelect.selectedIndex].text + " </td> <td></td><td>" + cantidad + "</td><td><button class='quitar' name='quitar'>Quitar</button></td>";
-            //console.log(articuloSelect.value + " --- " + agregados[i].value)
+            if (cantidad > 0) {
+                articulosAgregados[i].innerHTML = "<td> <input type='hidden' name='articulo' class='agregados' value='" + articuloSelect.value + "'/><input type='hidden' class='cantidad' name='cantidad' value='" + cantidad + "'/> - " + articuloSelect.options[articuloSelect.selectedIndex].text + " </td> <td></td><td>" + cantidad + "</td><td><button class='quitar btn btn-info' name='quitar'>Quitar</button></td>";
+            }
+            
         }
     }
 
@@ -45,43 +42,43 @@ function quitarArticulo(e) {
 }
 
 
-//$(document).ready(function () {
+$(document).ready(function () {
 
-//    // DataTable
-//    var table = $('#example').DataTable({
-//        "searching": false,
-//        "info": false,
-//        initComplete: function () {
-//            // Apply the search
-//            this.api().columns().every(function () {
-//                var that = this;
+    // DataTable
+    var table = $('#example').DataTable({
+        "searching": false,
+        "info": false,
+        initComplete: function () {
+            // Apply the search
+            this.api().columns().every(function () {
+                var that = this;
 
-//                $('input', this.footer()).on('keyup change clear', function () {
-//                    if (that.search() !== this.value) {
-//                        that
-//                            .search(this.value)
-//                            .draw();
-//                    }
-//                });
-//            });
-//        }
-//    });
+                //$('input', this.footer()).on('keyup change clear', function () {
+                //    if (that.search() !== this.value) {
+                //        that
+                //            .search(this.value)
+                //            .draw();
+                //    }
+                //});
+            });
+        }
+    });
 
 
-//    let eliminar = document.getElementsByClassName('eliminar')
+    let eliminar = document.getElementsByClassName('eliminar')
 
-//    for (let i = 0; i < eliminar.length; i++) {
+    for (let i = 0; i < eliminar.length; i++) {
 
-//        console.log(eliminar[i])
-//    }
-//});
+        console.log(eliminar[i])
+    }
+});
 
 function filtro_cliente() {
     // Declare variables
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("buscar_cliente");
     filter = input.value.toUpperCase();
-    table = document.getElementById("example");
+    table = document.getElementById("tabla_pedidos");
     tr = table.getElementsByTagName("tr");
 
     // Loop through all table rows, and hide those who don't match the search query
@@ -103,7 +100,7 @@ function filtro_estado() {
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("buscar_estado");
     filter = input.value.toUpperCase();
-    table = document.getElementById("example");
+    table = document.getElementById("tabla_pedidos");
     tr = table.getElementsByTagName("tr");
 
     // Loop through all table rows, and hide those who don't match the search query
@@ -197,3 +194,28 @@ function eliminar() {
     })
 };
 
+function filtro_eliminados() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("excluir_eliminados");
+    filter = input.checked;
+    table = document.getElementById("tabla_pedidos");
+    tr = table.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByClassName("fecha-borrado")[0];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (filter) {
+                if (txtValue === '') {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            } else {
+                tr[i].style.display = "";
+            }
+        }
+    }
+};

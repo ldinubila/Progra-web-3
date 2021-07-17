@@ -9,13 +9,13 @@
             this.api().columns().every(function () {
                 var that = this;
 
-                $('input', this.footer()).on('keyup change clear', function () {
-                    if (that.search() !== this.value) {
-                        that
-                            .search(this.value)
-                            .draw();
-                    }
-                });
+                //$('input', this.footer()).on('keyup change clear', function () {
+                //    if (that.search() !== this.value) {
+                //        that
+                //            .search(this.value)
+                //            .draw();
+                //    }
+                //});
             });
         }
     });
@@ -68,6 +68,29 @@ function filtro_estado() {
                 tr[i].style.display = "";
             } else {
                 tr[i].style.display = "none";
+            }
+        }
+    }
+};
+
+function filtro_eliminados() {
+    var input, filter, tr, td, i, txtValue;
+    input = document.getElementById("excluir_eliminados");
+    filter = input.checked;
+    tr = $("#tabla_pedidos tr");
+
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByClassName("fecha-borrado")[0];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (filter) {
+                if (txtValue === '') {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            } else {
+                tr[i].style.display = "";
             }
         }
     }
@@ -153,9 +176,5 @@ $(document).ready(() => {
                 }
             });
         })
-};
-
-function validarEstado() {
-    console.log("Hola estado");
 };
 
