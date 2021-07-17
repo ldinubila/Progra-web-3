@@ -29,7 +29,7 @@ namespace Entidades.Models
         public bool EsAdmin { get; set; }
         
         [Required(ErrorMessage = "Email requerido.")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Formato inválido.")]
         public string Email { get; set; }
         
         [Required(ErrorMessage = "Contraseña requerida.")]
