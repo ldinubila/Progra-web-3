@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 
 #nullable disable
 
@@ -28,7 +29,7 @@ namespace Entidades.Models
         public bool EsAdmin { get; set; }
         
         [Required(ErrorMessage = "Email requerido.")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Formato inválido.")]
         public string Email { get; set; }
         
         [Required(ErrorMessage = "Contraseña requerida.")]
@@ -41,9 +42,13 @@ namespace Entidades.Models
         
         [StringLength(50)]
         public string Apellido { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime? FechaNacimiento { get; set; }
         public DateTime? FechaUltLogin { get; set; }
-        public DateTime FechaCreacion { get; set; }
+        public DateTime? FechaCreacion { get; set; }
+
         public DateTime? FechaModificacion { get; set; }
         public DateTime? FechaBorrado { get; set; }
         public int? ModificadoPor { get; set; }
