@@ -15,6 +15,10 @@
             <div class="selectCliente">
                 <select aria-label="Default select example" name="idCliente">
                     <option selected>Cliente</option>
+                    @*@foreach (Pedido pedido in Model)
+            {
+                        <option value="@pedido.IdCliente">@pedido.IdClienteNavigation.Nombre</option>
+            }*@
                     @foreach (Cliente cliente in Model)
                     {
                         <option value=@cliente.IdCliente>@cliente.Nombre</option>

@@ -51,9 +51,22 @@ namespace Progra_web_3_Tp_final.Controllers
         public IActionResult NuevoPedido()
         {
             ViewBag.TodosLosArticulos = _pedidosServicio.ObtenerTodosLosArticulos();
-            List<Cliente> clientes = context.Clientes.Include(c => c.Pedidos.Where(p => p.IdEstado != 1)).ToList();
-            
-            return View(clientes);
+            var clientes = context.Clientes
+                           .Join(context.Pedidos, c => c.IdCliente, p => p.IdClienteNavigation.IdCliente, (c, p) => new { c, p })
+                           .Where(x => x.p.IdEstado == 1)
+                           .GroupBy(g => g.c.IdCliente)
+                           .Select(g => new { idCliente = g.Key, total = g.Count() })
+                           .Where(x => x.total >= 1)
+                           .ToList();
+
+            List<int> listInt = new List<int>();
+            foreach (var c in clientes)
+            {
+                listInt.Add(c.idCliente);
+            }
+
+            List<Cliente> listClientes = context.Clientes.Where(c => !listInt.Contains(c.IdCliente)).ToList();
+            return View(listClientes);
         }
 
         public ActionResult EditarPedido(int id)
