@@ -29,8 +29,8 @@
         </div>
     </div>
     <form method="post" action="../../Pedidos/ActualizarPedido">
-        <input type="hidden" value="@Model.IdPedido" name="IdPedido"/>
-        <table id="tabla_pedidos" class="display text-center" style="width:100%">
+        <input type="hidden" value="@Model.IdPedido" name="IdPedido" />
+        <table id="tabla_editar_pedidos" class="display text-center" style="width:100%">
             <thead>
                 <tr>
                     <th>Descripcion</th>
@@ -55,10 +55,8 @@
             <label for="excluir_eliminados">Comentarios</label>
             <textarea name="textarea" rows="10" cols="150">Escribe aquí</textarea>
         </div>
-            <button type="submit" class="btn btn-success" id="guardar">Guardar</button>
-    </form>
+        <button type="submit" class="btn btn-success" id="guardar">Guardar</button>
         <div class="botonesFinal">
-            
             <form action="../../Pedidos/Index" method="post">
                 <button type="submit" class="btn btn-success">Volver</button>
             </form>
@@ -71,14 +69,15 @@
                 <input type="hidden" value="@Model.IdPedido" name="id" />
                 <button type="submit" class="btn btn-success">Entregado</button>
             </form>
-
-
-
             <form action="../../Pedidos/Eliminar" method="post">
                 <input type="hidden" value="@Model.IdPedido" name="id" />
                 <button type="submit" class="btn btn-success">Eliminar</button>
             </form>
+
         </div>
+        
+    </form>
+        
         }
         else
         {
@@ -101,7 +100,7 @@
                 </div>
             </div>
         </div>
-        <table id="example" class="display text-center" style="width:100%">
+        <table id="tabla_pedidos" class="display text-center" style="width:100%">
             <thead>
                 <tr>
                     <th>Descripcion</th>

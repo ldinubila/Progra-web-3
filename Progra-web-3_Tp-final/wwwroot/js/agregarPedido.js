@@ -20,7 +20,7 @@ function agregarArticulo() {
             if (cantidad > 0) {
                 articulosAgregados[i].innerHTML = "<td> <input type='hidden' name='articulo' class='agregados' value='" + articuloSelect.value + "'/><input type='hidden' class='cantidad' name='cantidad' value='" + cantidad + "'/> - " + articuloSelect.options[articuloSelect.selectedIndex].text + " </td> <td></td><td>" + cantidad + "</td><td><button class='quitar btn btn-info' name='quitar'>Quitar</button></td>";
             }
-            
+
         }
     }
 
@@ -41,29 +41,6 @@ function quitarArticulo(e) {
     }
 }
 
-
-$(document).ready(function () {
-
-    // DataTable
-    var table = $('#tabla_nuevo_pedido').DataTable({
-        "searching": false,
-        "info": false,
-        initComplete: function () {
-            // Apply the search
-            this.api().columns().every(function () {
-                var that = this;
-            });
-        }
-    });
-
-
-    //let eliminar = document.getElementsByClassName('eliminar')
-
-    //for (let i = 0; i < eliminar.length; i++) {
-
-    //    console.log(eliminar[i])
-    //}
-});
 
 function filtro_cliente() {
     // Declare variables
@@ -109,51 +86,6 @@ function filtro_estado() {
     }
 };
 
-$(document).ready(() => {
-    $("#guardar").click(() => {
-        const data = collectData();
-
-        guardar(data, () => {
-            window.location.href = "/Pedidos/Index";
-        });
-    });
-
-    const limpiarForm = () => {
-        $(".pedidos-form :select, input").each(function () {
-            $(this).val("");
-        });
-    }
-
-    const collectData = () => {
-        const data = {};
-
-        $(".articulos-form :input").each(function () {
-            data[this.id] = $(this).val();
-        });
-
-        return data;
-    };
-
-    async function guardar(data, callback) {
-        Swal.fire(
-            'Pedido *DESCRIPCION* creado con éxito',
-            'Haga click para continuar',
-            'success'
-        ).then((result) => {
-            $.ajax({
-                url: "/Pedidos/Alta",
-                data,
-                success: response => {
-                    console.log(response);
-                    callback();
-                },
-                error: error => {
-                    console.log(error);
-                }
-            })
-        })
-    };
-});
 function eliminar() {
 
     valor = $('#boton_eliminar').val();
