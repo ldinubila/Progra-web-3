@@ -31,16 +31,12 @@
         <tbody>
             @foreach (Pedido pedido in Model)
             {
-                //if(pedido.FechaBorrado == null)
-                //{
             <tr>
                 <td>@pedido.IdClienteNavigation.Nombre - #@pedido.NroPedido</td>
                 <td id="estado">@pedido.IdEstadoNavigation.Descripcion</td>
                 <td>@pedido.FechaCreacion<span class="fecha-borrado">@pedido.FechaBorrado</span></td>
                 <td><a class="btn btn-info" href="/Pedidos/EditarPedido/@pedido.IdPedido" onclick="validarEstado()">Ver</a></td>
             </tr>
-                @*}*@
-                
             }
         </tbody>
     </table>

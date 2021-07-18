@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -13,6 +14,7 @@ namespace Entidades.Models
         }
 
         public int IdPedido { get; set; }
+        [Required(ErrorMessage = "Seleccione un Cliente")]
         public int IdCliente { get; set; }
         public int IdEstado { get; set; }
         public int NroPedido { get; set; }

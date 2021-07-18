@@ -4,7 +4,6 @@
     List<Entidades.Models.Articulo> articulos = ViewBag.TodosLosArticulos;
 }
 <link rel="stylesheet" href="~/css/nuevoPedido.css" />
-@*<script src="~/js/pedidos.js"></script>*@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
 
@@ -14,11 +13,6 @@
             <a href="../../Pedidos/Index">Volver</a>
             <div class="selectCliente">
                 <select aria-label="Default select example" name="idCliente">
-                    <option selected>Cliente</option>
-                    @*@foreach (Pedido pedido in Model)
-            {
-                        <option value="@pedido.IdCliente">@pedido.IdClienteNavigation.Nombre</option>
-            }*@
                     @foreach (Cliente cliente in Model)
                     {
                         <option value=@cliente.IdCliente>@cliente.Nombre</option>
@@ -27,8 +21,6 @@
             </div>
             <div class="selectDescripcion">
                 <select aria-label="Default select example" id="articuloSelect">
-                    <option selected>Descripcion o codigo</option>
-
                     @foreach (Articulo art in articulos)
                     {
                         <option value=@art.IdArticulo>@art.Descripcion - @art.Codigo</option>
@@ -58,6 +50,7 @@
         <textarea name="textarea" rows="10" cols="150" placeholder="Escribe aquí"></textarea>
     </div>
     <button type="submit" class="btn btn-success" id="guardar">Guardar</button>
+
 </form>
 
 <div class="botonesFinal">
@@ -67,3 +60,7 @@
 </div>
 
 <script src="~/js/AgregarPedido.js"></script>
+@section Scripts
+{
+    <partial name="/Views/Shared/_ValidationScriptsPartial.cshtml" />
+}
