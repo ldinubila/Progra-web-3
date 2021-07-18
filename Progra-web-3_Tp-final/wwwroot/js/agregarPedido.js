@@ -45,32 +45,24 @@ function quitarArticulo(e) {
 $(document).ready(function () {
 
     // DataTable
-    var table = $('#tabla_pedidos').DataTable({
+    var table = $('#tabla_nuevo_pedido').DataTable({
         "searching": false,
         "info": false,
         initComplete: function () {
             // Apply the search
             this.api().columns().every(function () {
                 var that = this;
-
-                //$('input', this.footer()).on('keyup change clear', function () {
-                //    if (that.search() !== this.value) {
-                //        that
-                //            .search(this.value)
-                //            .draw();
-                //    }
-                //});
             });
         }
     });
 
 
-    let eliminar = document.getElementsByClassName('eliminar')
+    //let eliminar = document.getElementsByClassName('eliminar')
 
-    for (let i = 0; i < eliminar.length; i++) {
+    //for (let i = 0; i < eliminar.length; i++) {
 
-        console.log(eliminar[i])
-    }
+    //    console.log(eliminar[i])
+    //}
 });
 
 function filtro_cliente() {
