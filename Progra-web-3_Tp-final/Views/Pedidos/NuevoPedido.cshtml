@@ -9,8 +9,7 @@
 
 <form method="post" action="../../Pedidos/AgregarPedido">
     <div class="text-center">
-        <div class="nuevoPedidos-filters">
-            <a href="../../Pedidos/Index">Volver</a>
+        <div class="nuevoPedidos-filters mb-4">
             <div class="selectCliente">
                 <select aria-label="Default select example" name="idCliente">
                     @foreach (Cliente cliente in Model)
@@ -27,13 +26,13 @@
                     }
                 </select>
                 <input type="number" value="1" id="cant" />
-                <button class="btn btn-success" id="agregar">Agregar</button>
+                <button class="btn btn-success ml-2" id="agregar">Agregar</button>
             </div>
         </div>
 
     </div>
 
-    <table id="tabla_nuevo_pedido" class="display" style="width:100%">
+    <table id="tabla_nuevo_pedido mt-4" class="display" style="width:100%">
         <thead>
             <tr>
                 <th>Descripcion</th>
@@ -45,8 +44,8 @@
         <tbody class="articulosPedidos" name="articulosPedidos" id="articulosPedidos">
         </tbody>
     </table>
-    <div class="cajaComentarios">
-        <label for="comentarios">Comentarios</label>
+    <div class="cajaComentarios mt-4">
+        <label for="comentarios" class="font-weight-bold">Comentarios</label>
         <textarea name="textarea" rows="10" cols="150" placeholder="Escribe aquí"></textarea>
     </div>
     <button type="submit" class="btn btn-success" id="guardar">Guardar</button>

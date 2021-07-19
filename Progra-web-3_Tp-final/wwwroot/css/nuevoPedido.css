@@ -22,16 +22,13 @@
     .selectCliente select {
         width: 230px;
         float: left;
-        border-radius: 10px;
         height: 38px;
     }
 .selectDescripcion {
-    margin-top: 100px;
     display: flex;
 }
     .selectDescripcion select {
         width: 230px;
-        border-radius: 10px;
     }
 
     .selectDescripcion input{
@@ -47,21 +44,11 @@
 }
 
 nuevoPedidos-filters button {
-    height: 50px;
-    border-radius: 10px;
     width: 150px;
 }
 
-#example {
-    margin-top: 250px;
-}
-
-#example_wrapper {
-    margin-top: 50px;
-}
-
 .cajaComentarios {
-    width: 1500px;
+    width: 750px;
     height: 302px;
 }
 
@@ -70,7 +57,7 @@ nuevoPedidos-filters button {
     }
 
     .cajaComentarios textarea {
-        margin-top: 30px;
+        margin-top: 45px;
         margin-right: 1500px;
     }
 

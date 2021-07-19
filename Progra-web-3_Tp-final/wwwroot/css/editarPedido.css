@@ -16,13 +16,11 @@
 .selectCliente {
     width: 1110px;
     position: absolute;
-    margin-top: 40px;
 }
 
     .selectCliente select {
         width: 230px;
         float: left;
-        border-radius: 10px;
         height: 38px;
     }
 .selectDescripcion {
@@ -31,7 +29,6 @@
 }
     .selectDescripcion select {
         width: 230px;
-        border-radius: 10px;
     }
 
     .selectDescripcion input{
@@ -47,21 +44,12 @@
 }
 
 nuevoPedidos-filters button {
-    height: 50px;
-    border-radius: 10px;
     width: 150px;
 }
 
-#tabla_pedidos {
-    margin-top: 250px;
-}
-
-#tabla_pedidos_wrapper {
-    margin-top: 50px;
-}
 
 .cajaComentarios {
-    width: 1500px;
+    width: 750px;
     height: 302px;
 }
 
