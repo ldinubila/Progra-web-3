@@ -18,7 +18,7 @@ function agregarArticulo() {
             validar = true;
             cantidad = parseInt(cantidades[i].value) + parseInt(cantidad)
             if (cantidad > 0) {
-                articulosAgregados[i].innerHTML = "<td> <input type='hidden' name='articulo' class='agregados' value='" + articuloSelect.value + "'/><input type='hidden' class='cantidad' name='cantidad' value='" + cantidad + "'/> - " + articuloSelect.options[articuloSelect.selectedIndex].text + " </td> <td></td><td>" + cantidad + "</td><td><button class='quitar btn btn-info' name='quitar'>Quitar</button></td>";
+                articulosAgregados[i].innerHTML = "<td> <input type='hidden' name='articulo' class='agregados' value='" + articuloSelect.value + "'/><input type='hidden' class='cantidad' name='cantidad' value='" + cantidad + "'/> - " + articuloSelect.options[articuloSelect.selectedIndex].text + " </td> <td></td><td>" + cantidad + "</td><td><button class='quitar btn btn-danger' name='quitar'>Quitar</button></td>";
             }
 
         }
@@ -26,7 +26,7 @@ function agregarArticulo() {
 
     if (validar == false) {
 
-        articulosPedidos.innerHTML += "<tr class='articulosAgregados'><td> <input type='hidden' class='agregados' name='articulo' value='" + articuloSelect.value + "'/><input type='hidden' class='cantidad' name='cantidad' value='" + cantidad + "'/> - " + articuloSelect.options[articuloSelect.selectedIndex].text + " </td> <td></td><td>" + cantidad + "</td><td><button class='quitar' name='quitar'>Quitar</button></td></tr>";
+        articulosPedidos.innerHTML += "<tr class='articulosAgregados'><td> <input type='hidden' class='agregados' name='articulo' value='" + articuloSelect.value + "'/><input type='hidden' class='cantidad' name='cantidad' value='" + cantidad + "'/> - " + articuloSelect.options[articuloSelect.selectedIndex].text + " </td> <td></td><td>" + cantidad + "</td><td><button class='quitar btn btn-danger' name='quitar'>Quitar</button></td></tr>";
     }
 }
 

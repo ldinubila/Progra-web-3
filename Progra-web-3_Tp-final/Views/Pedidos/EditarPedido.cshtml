@@ -13,7 +13,6 @@
 {
     <div class="text-center">
         <div class="nuevoPedidos-filters">
-            <a href="../../Pedidos/Index">Volver</a>
             <div class="selectDescripcion">
                 <select aria-label="Default select example" id="articuloSelect">
                     <option selected>Descripcion o codigo</option>
@@ -24,13 +23,13 @@
                     }
                 </select>
                 <input type="number" value="1" id="cant" />
-                <button class="btn btn-success" id="agregar">Agregar</button>
+                <button class="btn btn-success ml-2" id="agregar">Agregar</button>
             </div>
         </div>
     </div>
-    <form method="post" action="../../Pedidos/ActualizarPedido">
+    <form method="post" action="../../Pedidos/ActualizarPedido" class="mt-4">
         <input type="hidden" value="@Model.IdPedido" name="IdPedido" />
-        <table id="tabla_editar_pedidos" class="display text-center" style="width:100%">
+        <table id="tabla_pedidos" class="display text-center" style="width:100%">
             <thead>
                 <tr>
                     <th>Descripcion</th>
@@ -46,13 +45,13 @@
                         <td><input type="hidden" name="articulo" value="@pedart.IdArticulo" class="agregados" /> <input type="hidden" name="cantidad" class="cantidad" value="@pedart.Cantidad" /> @pedart.IdArticuloNavigation.Descripcion</td>
                         <td>@pedart.IdArticuloNavigation.Codigo</td>
                         <td>@pedart.Cantidad</td>
-                        <td><button class='quitar' name='quitar'>Quitar</button></td>
+                        <td><button class='quitar btn btn-danger' name='quitar'>Quitar</button></td>
                     </tr>
                 }
             </tbody>
         </table>
         <div class="cajaComentarios">
-            <label for="excluir_eliminados">Comentarios</label>
+            <label for="excluir_eliminados" class="font-weight-bold">Comentarios</label>
             <textarea name="textarea" rows="10" cols="150">Escribe aquí</textarea>
         </div>
         <button type="submit" class="btn btn-success" id="guardar">Guardar</button>
